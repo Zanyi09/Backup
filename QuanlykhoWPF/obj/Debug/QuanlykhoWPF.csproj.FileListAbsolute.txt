@@ -53,3 +53,5 @@ C:\Users\ssvan\source\repos\QuanlykhoWPF\QuanlykhoWPF\bin\Debug\EntityFramework.
 C:\Users\ssvan\source\repos\QuanlykhoWPF\QuanlykhoWPF\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\ssvan\source\repos\QuanlykhoWPF\QuanlykhoWPF\bin\Debug\EntityFramework.xml
 C:\Users\ssvan\source\repos\QuanlykhoWPF\QuanlykhoWPF\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ssvan\source\repos\QuanlykhoWPF\QuanlykhoWPF\obj\Debug\UserControlVD\UsernameBar.g.cs
+C:\Users\ssvan\source\repos\QuanlykhoWPF\QuanlykhoWPF\obj\Debug\UserControlVD\UsernameBar.baml

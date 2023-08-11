@@ -2,11 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms;
 using System.Windows.Input;
 
 namespace QuanlykhoWPF.ViewModel
@@ -25,29 +27,42 @@ namespace QuanlykhoWPF.ViewModel
         public ICommand Usercommand { get; set; }
         public ICommand Inputcommand { get;set; }
         public ICommand Outputcommand { get;set; }
+        public ICommand Logoutcommand { get; set; }
+        public string filePath = "C:/Users/ssvan/source/repos/QuanlykhoWPF/login.txt";
         public MainViewModel()
         {
             WindowLoaded = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
-                IsLoading = true;
-                if (p == null)
-                    return;
-                p.Hide();
-                Login login = new Login();
-                login.ShowDialog();
-                if (login.DataContext == null)
-                    return;
-                var LoginVM = login.DataContext as LoginViewModel;
-                if (LoginVM.IsLogin)
+                if (File.Exists(filePath))
                 {
+                    IsLoading = true;
+                    Login login1 = new Login();
+                    login1.Close();
                     Loaddatatonkho();
-                    p.Show();
-                    
                 }
                 else
                 {
-                    p.Close();
+                    IsLoading = true;
+                    if (p == null)
+                        return;
+                    p.Hide();
+                    Login login = new Login();
+                    login.ShowDialog();
+                    if (login.DataContext == null)
+                        return;
+                    var LoginVM = login.DataContext as LoginViewModel;
+                    if (LoginVM.IsLogin)
+                    {
+                        Loaddatatonkho();
+                        p.Show();
+
+                    }
+                    else
+                    {
+                        p.Close();
+                    }
                 }
+                
                 
             });
             Unitcommand = new RelayCommand<object>((p) => { return true; }, (p) =>
@@ -84,6 +99,18 @@ namespace QuanlykhoWPF.ViewModel
             {
                 OutputWindow ow = new OutputWindow();
                 ow.ShowDialog();
+            });
+            Logoutcommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                DialogResult dialogResult = System.Windows.Forms.MessageBox.Show("Bạn có muốn đăng xuất không?", "Thông báo", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    File.Delete(filePath);
+                    p.Close();
+                  //  Login login = new Login();
+                   // login.ShowDialog();
+                    
+                }
             });
 
 

@@ -37,8 +37,8 @@
             <Grid Grid.Row="0" >
                 <materialDesign:Card Grid.Row="0">
                     <WrapPanel>
-                        <TextBox Text="{Binding IdObject, UpdateSourceTrigger=PropertyChanged}" Margin="15 5 15 5" materialDesign:HintAssist.Hint="Tên vật tư" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                        <DatePicker VerticalAlignment="Center" SelectedDate="{Binding DateInput,UpdateSourceTrigger=PropertyChanged}" Width="100" Margin="15 5 15 5" materialDesign:HintAssist.Hint="Ngày nhập" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                        <TextBox  Text="{Binding Object, UpdateSourceTrigger=PropertyChanged}" Margin="15 5 15 5" materialDesign:HintAssist.Hint="Tên vật tư" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        <DatePicker VerticalAlignment="Center" SelectedDate="{Binding Inputlist,UpdateSourceTrigger=PropertyChanged}" Width="100" Margin="15 5 15 5" materialDesign:HintAssist.Hint="Ngày nhập" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                         <TextBox Text="{Binding Count, UpdateSourceTrigger=PropertyChanged}" Margin="15 5 15 5" materialDesign:HintAssist.Hint="Số lượng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                         <TextBox Text="{Binding InputPrice, UpdateSourceTrigger=PropertyChanged}" Margin="15 5 15 5" materialDesign:HintAssist.Hint="Giá nhập" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                         <TextBox Text="{Binding OutputPrice, UpdateSourceTrigger=PropertyChanged}" Margin="15 5 15 5" materialDesign:HintAssist.Hint="Giá xuất" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
@@ -75,7 +75,7 @@
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Vật tư" DisplayMemberBinding="{Binding Object.DisplayName}"></GridViewColumn>
-                                <GridViewColumn Header="Ngày nhập" DisplayMemberBinding="{Binding Input}"></GridViewColumn>
+                                <GridViewColumn Header="Ngày nhập" DisplayMemberBinding="{Binding Input.DateInput}"></GridViewColumn>
                                 <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding Count}"></GridViewColumn>
                                 <GridViewColumn Header="Giá nhập" DisplayMemberBinding="{Binding InputPrice}"></GridViewColumn>
                                 <GridViewColumn Header="Giá xuất" DisplayMemberBinding="{Binding OutputPrice}"></GridViewColumn>

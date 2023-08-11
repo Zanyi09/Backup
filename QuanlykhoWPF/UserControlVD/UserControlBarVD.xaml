@@ -16,10 +16,10 @@
             </i:Interaction.Triggers>
     <Grid>
         <materialDesign:ColorZone 
-  Padding="4"
-  Mode="PrimaryLight">
+                Padding="4"
+                 Mode="PrimaryLight">
             <DockPanel>
-                <StackPanel DockPanel.Dock="Right"  Background="Transparent" Orientation="Horizontal" >
+                <StackPanel DockPanel.Dock="Right"  Background="Transparent" Orientation="Horizontal" HorizontalAlignment="Right" >
                     <StackPanel.Resources>
                         <Style TargetType="Button">
                             <Setter Property="Margin" Value="2 10 2 10"></Setter>
@@ -39,10 +39,8 @@
                          ToolTip="Close">
                     </Button>
                 </StackPanel>
-                <StackPanel DockPanel.Dock="Left" Margin="3 3 10 3"
+                <StackPanel HorizontalAlignment="Center" Margin="3 3 10 3"
       Orientation="Horizontal">
-                    <ToggleButton
-        Style="{StaticResource MaterialDesignHamburgerToggleButton}" />
                     <TextBlock
         Margin="16,0,0,0"
         VerticalAlignment="Center"

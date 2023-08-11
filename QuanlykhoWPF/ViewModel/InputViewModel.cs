@@ -14,8 +14,18 @@ namespace QuanlykhoWPF.ViewModel
         private ObservableCollection<InputInfo> _list;
         public ObservableCollection<InputInfo> List { get => _list; set { _list = value; OnPropertyChanged(); } }
 
-        private ObservableCollection<Input> _listip;
-        public ObservableCollection<Input> Listip { get => _listip; set { _listip = value; OnPropertyChanged(); } }
+        private ObservableCollection<Input> _input;
+        public ObservableCollection<Input> Inputlist { get => _input; set { _input = value; OnPropertyChanged(); } }
+
+        private ObservableCollection<Model.Object> _object;
+        public ObservableCollection<Model.Object> Object { get => _object; set { _object = value; OnPropertyChanged(); } }
+
+
+        private ObservableCollection<Unit> _Unit;
+        public ObservableCollection<Unit> Unit { get => _Unit; set { _Unit = value; OnPropertyChanged(); } }
+
+        private ObservableCollection<Suplier> _Suplier;
+        public ObservableCollection<Suplier> Suplier { get => _Suplier; set { _Suplier = value; OnPropertyChanged(); } } 
 
         private InputInfo _selecteditem;
         public InputInfo SelectedItem { 
@@ -24,11 +34,13 @@ namespace QuanlykhoWPF.ViewModel
                 OnPropertyChanged();
                 if (SelectedItem != null) { 
                     IdObject = SelectedItem.IdObject;
+                                                                        
                     Count = SelectedItem.Count;
                     InputPrice = SelectedItem.InputPrice;
                     OutputPrice = SelectedItem.OutputPrice;
                     Status = SelectedItem.Status;
-                    DateInput = SelectedInput.DateInput;
+                    SelectedInput = SelectedItem.Input;
+                    Selectedobject = SelectedItem.Object;
                 } 
             } 
         }
@@ -40,7 +52,15 @@ namespace QuanlykhoWPF.ViewModel
             {
                 _Selectedinput = value; OnPropertyChanged();
                 DateInput = SelectedInput.DateInput;
-                OnPropertyChanged();
+            }
+        }
+        private Model.Object _Selectedobject;
+        public Model.Object Selectedobject
+        {
+            get => _Selectedobject;
+            set
+            {
+                _Selectedobject = value; OnPropertyChanged();
             }
         }
         private string _Id;
@@ -49,6 +69,10 @@ namespace QuanlykhoWPF.ViewModel
         public string IdObject { get => _IdObject; set { _IdObject = value; OnPropertyChanged(); } }
         private string _IdInput;
         public string IdInput { get => _IdInput; set { _IdInput = value; OnPropertyChanged(); } }
+
+        private string _displayname;
+        public string Displayname { get => _displayname; set { _displayname = value; OnPropertyChanged(); } }
+
         private int _Count;
         public Nullable<int> Count { get => _Count; set { _Count = (int)value; OnPropertyChanged(); } }
         private double _InputPrice;
@@ -61,30 +85,37 @@ namespace QuanlykhoWPF.ViewModel
         public DateTime? DateInput { get => _DateInput; set { _DateInput = value; OnPropertyChanged(); } }
 
 
+
         public ICommand Addcommand { get; set; }
         public ICommand Editcommand { get; set; }
         public InputViewModel()
         {
             List = new ObservableCollection<InputInfo>(Dataprovider._Istance.DB.InputInfoes);
-            Listip = new ObservableCollection<Input>(Dataprovider._Istance.DB.Inputs);
-
+            Inputlist = new ObservableCollection<Input>(Dataprovider._Istance.DB.Inputs);
+            Object = new ObservableCollection<Model.Object>(Dataprovider._Istance.DB.Objects);
+            Unit = new ObservableCollection<Unit>(Dataprovider._Istance.DB.Units);
+            Suplier = new ObservableCollection<Suplier>(Dataprovider._Istance.DB.Supliers);
             Addcommand = new RelayCommand<object>((p) =>
             {
                 return true;
             },
             (p) =>
             {
-                var InputIfo = new InputInfo() { Id = Guid.NewGuid().ToString(),IdObject = IdObject, IdInput = Guid.NewGuid().ToString(), Count = Count, InputPrice = InputPrice, OutputPrice = OutputPrice, Status = Status };
-                Dataprovider._Istance.DB.InputInfoes.Add(InputIfo);
-                var Input = new Input() { Id = IdInput,DateInput = DateInput };
+                var Input = new Input() { Id = Guid.NewGuid().ToString(), DateInput = DateInput };
                 Dataprovider._Istance.DB.Inputs.Add(Input);
+                var Unit = new Model.Unit() { };
+                var Supplier = new Model.Suplier() { };
+                var Object = new Model.Object(){ Id= Guid.NewGuid().ToString(), DisplayName= Displayname,IdUnit= Unit.Id, IdSuplier=Supplier.Id};
+                
+                Dataprovider._Istance.DB.Objects.Add(Object);
+                Dataprovider._Istance.DB.Units.Add(Unit);
+                Dataprovider._Istance.DB.Supliers.Add(Supplier);
+                var InputIfo = new InputInfo() { Id = Guid.NewGuid().ToString(),IdObject = Object.Id, IdInput = Input.Id, Count = Count, InputPrice = InputPrice, OutputPrice = OutputPrice, Status = Status };
                 Dataprovider._Istance.DB.InputInfoes.Add(InputIfo);
-                Dataprovider._Istance.DB.Inputs.Add(Input);
 
                 Dataprovider._Istance.DB.SaveChanges();
-
-               List.Add(InputIfo);
-               Listip.Add(Input);
+                List.Add(InputIfo);
+                
             });
 
             Editcommand = new RelayCommand<object>((p) =>

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms;
 using System.Windows.Input;
 
 namespace QuanlykhoWPF.ViewModel
@@ -21,16 +22,21 @@ namespace QuanlykhoWPF.ViewModel
 
         public ControlBarViewModel()
         {
-            CloseWindowCommand = new RelayCommand<UserControl>((p) => { return p == null ? false : true; }, (p) => {
+            CloseWindowCommand = new RelayCommand<System.Windows.Controls.UserControl>((p) => { return p == null ? false : true; }, (p) => {
                 FrameworkElement window = GetWindowParent(p);
                 var w = window as Window;
                 if (w != null)
                 {
-                    w.Close();
+                    DialogResult dialogResult = System.Windows.Forms.MessageBox.Show("Bạn có muốn thoát không?", "Thông báo", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        w.Close();
+                    }
+       
                 }
             }
             );
-            CloseWindowMinimize = new RelayCommand<UserControl>((p) => { return p == null ? false : true; }, (p) => {
+            CloseWindowMinimize = new RelayCommand<System.Windows.Controls.UserControl>((p) => { return p == null ? false : true; }, (p) => {
                 FrameworkElement window = GetWindowParent(p);
                 var w = window as Window;
                 if (w != null)
@@ -42,7 +48,7 @@ namespace QuanlykhoWPF.ViewModel
                 }
             }
             );
-            CloseWindowMaximize = new RelayCommand<UserControl>((p) => { return p == null ? false : true; }, (p) => {
+            CloseWindowMaximize = new RelayCommand<System.Windows.Controls.UserControl>((p) => { return p == null ? false : true; }, (p) => {
                 FrameworkElement window = GetWindowParent(p);
                 var w = window as Window;
                 if (w != null)
@@ -54,7 +60,7 @@ namespace QuanlykhoWPF.ViewModel
                 }
             }
             );
-            MouseMove = new RelayCommand<UserControl>((p) => { return p == null ? false : true; }, (p) => {
+            MouseMove = new RelayCommand<System.Windows.Controls.UserControl>((p) => { return p == null ? false : true; }, (p) => {
                 FrameworkElement window = GetWindowParent(p);
                 var w = window as Window;
                 if (w != null)
@@ -64,7 +70,7 @@ namespace QuanlykhoWPF.ViewModel
             }
             );
         }
-        FrameworkElement GetWindowParent(UserControl p)
+        FrameworkElement GetWindowParent(System.Windows.Controls.UserControl p)
         {
             FrameworkElement parent = p;
 

@@ -9,22 +9,19 @@
 
 namespace QuanlykhoWPF.Model
 {
-    using QuanlykhoWPF.ViewModel;
     using System;
     using System.Collections.Generic;
     
-    public partial class Input : BaseViewModel
+    public partial class Input
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Input()
         {
             this.InputInfoes = new HashSet<InputInfo>();
         }
-
-        private string _id;
-        public string Id { get => _id; set {_id = value; OnPropertyChanged(); } }
-        private Nullable<System.DateTime> _DateInput;
-        public Nullable<System.DateTime> DateInput { get => _DateInput; set { _DateInput = value; OnPropertyChanged(); } }
+    
+        public string Id { get; set; }
+        public Nullable<System.DateTime> DateInput { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<InputInfo> InputInfoes { get; set; }

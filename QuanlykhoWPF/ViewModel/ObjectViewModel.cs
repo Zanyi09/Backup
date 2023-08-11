@@ -58,6 +58,7 @@ namespace QuanlykhoWPF.ViewModel
             {
                 _SelectedSuplier = value;
                 OnPropertyChanged();
+
             }
         }
 
