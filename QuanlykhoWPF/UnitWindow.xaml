@@ -57,7 +57,7 @@
                             <Button Content="Sửa" Command="{Binding Editcommand}"></Button>
                         </Grid>
                         <Grid Grid.Column="2" Margin="10">
-                            <Button Content="Xóa" Command="{Binding Deletebutton}"></Button>
+                            <Button Content="Xóa" Command="{Binding Deletecommand}"></Button>
                         </Grid>
                     </Grid>
                 </WrapPanel>

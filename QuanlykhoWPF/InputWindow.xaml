@@ -37,8 +37,10 @@
             <Grid Grid.Row="0" >
                 <materialDesign:Card Grid.Row="0">
                     <WrapPanel>
-                        <TextBox  Text="{Binding Object, UpdateSourceTrigger=PropertyChanged}" Margin="15 5 15 5" materialDesign:HintAssist.Hint="Tên vật tư" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                        <DatePicker VerticalAlignment="Center" SelectedDate="{Binding Inputlist,UpdateSourceTrigger=PropertyChanged}" Width="100" Margin="15 5 15 5" materialDesign:HintAssist.Hint="Ngày nhập" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                        <TextBox  Text="{Binding Displayname, UpdateSourceTrigger=PropertyChanged}" Margin="15 5 15 5" materialDesign:HintAssist.Hint="Tên vật tư" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        <DatePicker VerticalAlignment="Center" SelectedDate="{Binding DateInput,UpdateSourceTrigger=PropertyChanged}" Width="100" Margin="15 5 15 5" materialDesign:HintAssist.Hint="Ngày nhập" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                        <ComboBox Margin="35 22 10 15" DisplayMemberPath="DisplayName" materialDesign:HintAssist.Hint="Đơn vị đo" ItemsSource="{Binding Unit}" SelectedItem="{Binding SelectedUnit , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></ComboBox>
+                        <ComboBox Margin="35 22 10 15"  DisplayMemberPath="DisplayName" materialDesign:HintAssist.Hint="Nhà cung cấp" ItemsSource="{Binding Suplier}" SelectedItem="{Binding SelectedSuplier , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></ComboBox>
                         <TextBox Text="{Binding Count, UpdateSourceTrigger=PropertyChanged}" Margin="15 5 15 5" materialDesign:HintAssist.Hint="Số lượng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                         <TextBox Text="{Binding InputPrice, UpdateSourceTrigger=PropertyChanged}" Margin="15 5 15 5" materialDesign:HintAssist.Hint="Giá nhập" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                         <TextBox Text="{Binding OutputPrice, UpdateSourceTrigger=PropertyChanged}" Margin="15 5 15 5" materialDesign:HintAssist.Hint="Giá xuất" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />

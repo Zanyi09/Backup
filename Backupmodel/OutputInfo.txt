@@ -16,7 +16,7 @@ namespace QuanlykhoWPF.Model
     public partial class OutputInfo : BaseViewModel
     {
         private string _id;
-        public string Id { get => _id; set { _id = value; OnPropertyChanged(); } }
+        public string Id { get => _id; set { _id = value;  OnPropertyChanged(); } }
         private string _IdObject;
         public string IdObject { get => _IdObject; set { _IdObject = value; OnPropertyChanged(); } }
         private string _IdOutputInfo;
@@ -28,7 +28,7 @@ namespace QuanlykhoWPF.Model
         private string _Status;
         public string Status { get => _Status; set { _Status = value; OnPropertyChanged(); } }
 
-        private Customer _Customer;
+        private  Customer _Customer;
         public virtual Customer Customer { get => _Customer; set { _Customer = value; OnPropertyChanged(); } }
         private Object _Object;
         public virtual Object Object { get => _Object; set { _Object = value; OnPropertyChanged(); } }

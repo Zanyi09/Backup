@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Forms;
 using System.Windows.Input;
 
 namespace QuanlykhoWPF.ViewModel
@@ -23,6 +24,7 @@ namespace QuanlykhoWPF.ViewModel
 
         public ICommand Addcommand { get; set; }
         public ICommand Editcommand { get; set; }
+        public ICommand Deletecommand { get; set; }
         public UnitViewModel()
         {
             List = new ObservableCollection<Unit>(Dataprovider._Istance.DB.Units);
@@ -40,7 +42,7 @@ namespace QuanlykhoWPF.ViewModel
             {
                 var unitadd = new Unit() { DisplayName = DisplayName };
                 Dataprovider._Istance.DB.Units.Add(unitadd);
-                MessageBox.Show("Thêm thành công!");
+                System.Windows.MessageBox.Show("Thêm thành công!");
                 Dataprovider._Istance.DB.SaveChanges();
 
                 List.Add(unitadd);
@@ -60,9 +62,29 @@ namespace QuanlykhoWPF.ViewModel
               var unitedit = Dataprovider._Istance.DB.Units.Where(a => a.Id == SelectedItem.Id).SingleOrDefault();
               unitedit.DisplayName = DisplayName;
               Dataprovider._Istance.DB.SaveChanges();
-              MessageBox.Show("Sửa thành công!");
+              System.Windows.Forms.MessageBox.Show("Sửa thành công!");
               SelectedItem.DisplayName = DisplayName;
           });
+            Deletecommand = new RelayCommand<object>((p) =>
+            {
+                return true;
+            },
+          (p) =>
+          {
+              DialogResult dialogResult = System.Windows.Forms.MessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo);
+              if (dialogResult == DialogResult.Yes)
+              {
+                  Delete(p);
+              }
+          });
+        }
+
+        private void Delete(object b)
+        {
+            var unitdel = Dataprovider._Istance.DB.Units.Where(a => a.Id == SelectedItem.Id).SingleOrDefault();
+            Dataprovider._Istance.DB.Units.Remove(unitdel);
+            Dataprovider._Istance.DB.SaveChanges();
+            System.Windows.Forms.MessageBox.Show("Xóa thành công!");
         }
     }
 }

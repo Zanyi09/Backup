@@ -5,18 +5,17 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
 
 namespace QuanlykhoWPF.ViewModel
 {
-    public class InputViewModel : BaseViewModel
+    public class OutputViewModel :BaseViewModel
     {
         private ObservableCollection<InputInfo> _list;
         public ObservableCollection<InputInfo> List { get => _list; set { _list = value; OnPropertyChanged(); } }
 
-        private ObservableCollection<Input> _input;
-        public ObservableCollection<Input> Inputlist { get => _input; set { _input = value; OnPropertyChanged(); } }
+        private ObservableCollection<Output> _output;
+        public ObservableCollection<Output> Outputlist { get => _output; set { _output = value; OnPropertyChanged(); } }
 
         private ObservableCollection<Model.Object> _object;
         public ObservableCollection<Model.Object> Object { get => _object; set { _object = value; OnPropertyChanged(); } }
@@ -26,33 +25,49 @@ namespace QuanlykhoWPF.ViewModel
         public ObservableCollection<Unit> Unit { get => _Unit; set { _Unit = value; OnPropertyChanged(); } }
 
         private ObservableCollection<Suplier> _Suplier;
-        public ObservableCollection<Suplier> Suplier { get => _Suplier; set { _Suplier = value; OnPropertyChanged(); } } 
+        public ObservableCollection<Suplier> Suplier { get => _Suplier; set { _Suplier = value; OnPropertyChanged(); } }
+
+
+        private ObservableCollection<Customer> _customer;
+        public ObservableCollection<Customer> Customer { get => _customer; set { _customer = value; OnPropertyChanged(); } }
 
         private InputInfo _selecteditem;
-        public InputInfo SelectedItem { 
-            get => _selecteditem; 
-            set { _selecteditem = value; 
-                OnPropertyChanged();
-                if (SelectedItem != null) { 
-                    IdObject = SelectedItem.IdObject;
-                                                                        
-                    Count = SelectedItem.Count;
-                    InputPrice = SelectedItem.InputPrice;
-                    OutputPrice = SelectedItem.OutputPrice;
-                    Status = SelectedItem.Status;
-                    SelectedInput = SelectedItem.Input;
-                    Selectedobject = SelectedItem.Object;
-                } 
-            } 
-        }
-        private Input _Selectedinput;
-        public Input SelectedInput
+        public InputInfo SelectedItem
         {
-            get => _Selectedinput;
+            get => _selecteditem;
             set
             {
-                _Selectedinput = value; OnPropertyChanged();
-                DateInput = SelectedInput.DateInput;
+                _selecteditem = value;
+                OnPropertyChanged();
+                if (SelectedItem != null)
+                {
+                    IdObject = SelectedItem.IdObject;
+
+                    Count = SelectedItem.Count;
+                    OutputPrice = SelectedItem.OutputPrice;
+                    Status = SelectedItem.Status;
+                    //SelectedOutput = SelectedItem.Object;
+                    Selectedobject = SelectedItem.Object;
+                }
+            }
+        }
+        private Output _Selectedoutput;
+        public Output SelectedOutput
+        {
+            get => _Selectedoutput;
+            set
+            {
+                _Selectedoutput = value; OnPropertyChanged();
+                DateOutput = SelectedOutput.DateOutput;
+            }
+        }
+        private Input _Selectedcustomer;
+        public Input SelectedCustomer
+        {
+            get => _Selectedcustomer;
+            set
+            {
+                _Selectedcustomer = value; OnPropertyChanged();
             }
         }
         private Model.Object _Selectedobject;
@@ -65,29 +80,8 @@ namespace QuanlykhoWPF.ViewModel
                 Displayname = _Selectedobject.DisplayName;
             }
         }
-        private Unit _SelectedUnit;
-        public Unit SelectedUnit
-        {
-            get => _SelectedUnit;
-            set
-            {
-                _SelectedUnit = value;
-                OnPropertyChanged();
-            }
-        }
-        private Suplier _SelectedSuplier;
-        public Suplier SelectedSuplier
-        {
-            get => _SelectedSuplier;
-            set
-            {
-                _SelectedSuplier = value;
-                OnPropertyChanged();
-
-            }
-        }
         private string _Id;
-        public string Id { get=> _Id; set { _Id = value; OnPropertyChanged(); } }
+        public string Id { get => _Id; set { _Id = value; OnPropertyChanged(); } }
         private string _IdObject;
         public string IdObject { get => _IdObject; set { _IdObject = value; OnPropertyChanged(); } }
         private string _IdInput;
@@ -104,41 +98,42 @@ namespace QuanlykhoWPF.ViewModel
         public Nullable<double> OutputPrice { get => _OutputPrice; set { _OutputPrice = (int)value; OnPropertyChanged(); } }
         private string _Status;
         public string Status { get => _Status; set { _Status = value; OnPropertyChanged(); } }
-        private DateTime? _DateInput;
-        public DateTime? DateInput { get => _DateInput; set { _DateInput = value; OnPropertyChanged(); } }
-
+       
+        private DateTime? _DateOutput;
+        public DateTime? DateOutput { get => _DateOutput; set { _DateOutput = value; OnPropertyChanged(); } }
 
 
         public ICommand Addcommand { get; set; }
         public ICommand Editcommand { get; set; }
-        public InputViewModel()
+        public OutputViewModel()
         {
             List = new ObservableCollection<InputInfo>(Dataprovider._Istance.DB.InputInfoes);
-            Inputlist = new ObservableCollection<Input>(Dataprovider._Istance.DB.Inputs);
+            Outputlist = new ObservableCollection<Output>(Dataprovider._Istance.DB.Outputs);
             Object = new ObservableCollection<Model.Object>(Dataprovider._Istance.DB.Objects);
             Unit = new ObservableCollection<Unit>(Dataprovider._Istance.DB.Units);
             Suplier = new ObservableCollection<Suplier>(Dataprovider._Istance.DB.Supliers);
+            Customer = new ObservableCollection<Customer>(Dataprovider._Istance.DB.Customers);
             Addcommand = new RelayCommand<object>((p) =>
             {
                 return true;
             },
             (p) =>
             {
-                var Input = new Input() { Id = Guid.NewGuid().ToString(), DateInput = DateInput };
+                //var Input = new Input() { Id = Guid.NewGuid().ToString(), DateInput = DateInput };
                 Dataprovider._Istance.DB.Inputs.Add(Input);
                 var Unit = new Model.Unit() { };
                 var Supplier = new Model.Suplier() { };
-                var Object = new Model.Object(){ Id= Guid.NewGuid().ToString(), DisplayName= Displayname,IdUnit=SelectedUnit.Id , IdSuplier=SelectedSuplier.Id};
-                
+                var Object = new Model.Object() { Id = Guid.NewGuid().ToString(), DisplayName = Displayname, IdUnit = Unit.Id, IdSuplier = Supplier.Id };
+
                 Dataprovider._Istance.DB.Objects.Add(Object);
                 Dataprovider._Istance.DB.Units.Add(Unit);
                 Dataprovider._Istance.DB.Supliers.Add(Supplier);
-                var InputIfo = new InputInfo() { Id = Guid.NewGuid().ToString(),IdObject = Object.Id, IdInput = Input.Id, Count = Count, InputPrice = InputPrice, OutputPrice = OutputPrice, Status = Status };
+                var InputIfo = new InputInfo() { Id = Guid.NewGuid().ToString(), IdObject = Object.Id, IdInput = Input.Id, Count = Count, InputPrice = InputPrice, OutputPrice = OutputPrice, Status = Status };
                 Dataprovider._Istance.DB.InputInfoes.Add(InputIfo);
 
                 Dataprovider._Istance.DB.SaveChanges();
                 List.Add(InputIfo);
-                
+
             });
 
             Editcommand = new RelayCommand<object>((p) =>
@@ -149,16 +144,16 @@ namespace QuanlykhoWPF.ViewModel
           {
               var Inputedit = Dataprovider._Istance.DB.InputInfoes.Where(a => a.Id == SelectedItem.Id).SingleOrDefault();
               var nameedit = Dataprovider._Istance.DB.Objects.Where(b => b.DisplayName == Selectedobject.DisplayName).FirstOrDefault();
-              var dateedit = Dataprovider._Istance.DB.Inputs.Where(c => c.DateInput == SelectedInput.DateInput).FirstOrDefault();
+             // var dateedit = Dataprovider._Istance.DB.Inputs.Where(c => c.DateInput == SelectedInput.DateInput).FirstOrDefault();
               Inputedit.IdObject = IdObject;
               nameedit.DisplayName = Displayname;
-              dateedit.DateInput = DateInput;
+             // dateedit.DateInput = DateInput;
               Inputedit.Count = Count;
               Inputedit.InputPrice = InputPrice;
               Inputedit.OutputPrice = OutputPrice;
               Inputedit.Status = Status;
               Dataprovider._Istance.DB.SaveChanges();
-              
+
               Selectedobject.DisplayName = Displayname;
 
           });

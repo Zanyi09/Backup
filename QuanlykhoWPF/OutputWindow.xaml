@@ -17,6 +17,7 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         Name="Window"
+        DataContext="{StaticResource OutputVM}"
         mc:Ignorable="d"
         Title="Xuất kho" Height="450" Width="780">
     <Grid>
@@ -36,11 +37,11 @@
             <Grid Grid.Row="0" >
                 <materialDesign:Card Grid.Row="0">
                     <WrapPanel>
-                        <TextBox Text="{Binding ObjectDisplayName, UpdateSourceTrigger=PropertyChanged}" Margin="15 5 15 5" materialDesign:HintAssist.Hint="Tên vật tư" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        <TextBox Text="{Binding Displayname, UpdateSourceTrigger=PropertyChanged}" Margin="15 5 15 5" materialDesign:HintAssist.Hint="Tên vật tư" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                         <DatePicker VerticalAlignment="Center" SelectedDate="{Binding DateOutput}" Width="100" Margin="15 5 15 5" materialDesign:HintAssist.Hint="Ngày xuất" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                         <TextBox Text="{Binding Count, UpdateSourceTrigger=PropertyChanged}" Margin="15 5 15 5" materialDesign:HintAssist.Hint="Số lượng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                        <TextBox Text="{Binding PriceOutput, UpdateSourceTrigger=PropertyChanged}" Margin="15 5 15 5" materialDesign:HintAssist.Hint="Giá xuất" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                        <ComboBox Margin="5 5 15 5" ItemsSource="{Binding Customer}" SelectedItem="{Binding SelectedCustomer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Khách hàng" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"></ComboBox>
+                        <TextBox Text="{Binding OutputPrice, UpdateSourceTrigger=PropertyChanged}" Margin="15 5 15 5" materialDesign:HintAssist.Hint="Giá xuất" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        <ComboBox Margin="5 5 15 5"  DisplayMemberPath="DisplayName" ItemsSource="{Binding Customer}" SelectedItem="{Binding SelectedCustomer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Khách hàng" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"></ComboBox>
 
                         <TextBox Text="{Binding Status, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Trạng thái xuất" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                     </WrapPanel>
@@ -52,16 +53,12 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="180"></ColumnDefinition>
                             <ColumnDefinition Width="180"></ColumnDefinition>
-                            <ColumnDefinition Width="180"></ColumnDefinition>
 
                         </Grid.ColumnDefinitions>
                         <Grid Grid.Column="0" Margin="10">
-                            <Button Content="Thêm" Command="{Binding Addbutton}"></Button>
+                            <Button Content="Sửa" Command="{Binding Editcommand}"></Button>
                         </Grid>
                         <Grid Grid.Column="1" Margin="10">
-                            <Button Content="Sửa" Command="{Binding Editbutton}"></Button>
-                        </Grid>
-                        <Grid Grid.Column="2" Margin="10">
                             <Button Content="Xóa" Command="{Binding Deletebutton}"></Button>
                         </Grid>
                    
