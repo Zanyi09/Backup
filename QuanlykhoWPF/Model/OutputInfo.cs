@@ -34,5 +34,8 @@ namespace QuanlykhoWPF.Model
         public virtual Object Object { get => _Object; set { _Object = value; OnPropertyChanged(); } }
         private Output _Output;
         public virtual Output Output { get => _Output; set { _Output = value; OnPropertyChanged(); } }
+
+        private InputInfo _inputinfo;
+        public virtual InputInfo Inputinfo { get => _inputinfo; set { _inputinfo = value; OnPropertyChanged(); } }
     }
 }

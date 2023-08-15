@@ -24,7 +24,7 @@ namespace QuanlykhoWPF.ViewModel
         public ICommand Logincommand { get; set; }
         public ICommand Passwordcommand { get; set; }
         public ICommand Exitcommand { get; set; }
-        public string filePath = "C:/Users/ssvan/source/repos/QuanlykhoWPF/login.txt";
+        public string filePath = " C:/Users/IRTech/source/repos/QuanlykhoWPF/login.txt";
         public LoginViewModel()
         {
             Username = "";

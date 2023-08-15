@@ -1,11 +1,13 @@
 ﻿using QuanlykhoWPF.Model;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Documents;
 using System.Windows.Input;
 
 namespace QuanlykhoWPF.ViewModel
@@ -29,6 +31,7 @@ namespace QuanlykhoWPF.ViewModel
         public ObservableCollection<Suplier> Suplier { get => _Suplier; set { _Suplier = value; OnPropertyChanged(); } } 
 
         private InputInfo _selecteditem;
+
         public InputInfo SelectedItem { 
             get => _selecteditem; 
             set { _selecteditem = value; 
@@ -107,17 +110,144 @@ namespace QuanlykhoWPF.ViewModel
         private DateTime? _DateInput;
         public DateTime? DateInput { get => _DateInput; set { _DateInput = value; OnPropertyChanged(); } }
 
+        private int _currentPage = 1;
+        public int CurrentPage
+        {
+            get => _currentPage;
+            set
+            {
+                _currentPage = value; OnPropertyChanged();
+            }
+        }
 
+        private int _NumberofPage = 10;
+        public int NumberofPage
+        {
+            get => _NumberofPage;
+            set
+            {
+                _NumberofPage = value; OnPropertyChanged();
+                UpdateEnableState();
+            }
+        }
+
+        private void UpdateEnableState()
+        {
+            IsFirstEnabled = CurrentPage > 1;
+            IsPreviousEnabled = CurrentPage > 1;
+            IsNextEnabled = CurrentPage < NumberofPage;
+            IsLastEnabled = CurrentPage < NumberofPage;
+        }
+
+        private int _selectedrecord = 5;
+        public int SelectedRecord
+        {
+            get => _selectedrecord;
+            set
+            {
+                _selectedrecord = value; OnPropertyChanged();
+                UpdateRecordCount();
+            }
+        }
+        private bool _isFirstEnabled;
+
+        public bool IsFirstEnabled
+        {
+            get { return _isFirstEnabled; }
+            set
+            {
+                _isFirstEnabled = value;
+                OnPropertyChanged(nameof(IsFirstEnabled));
+            }
+        }
+        private bool _isPreviousEnabled;
+        public bool IsPreviousEnabled
+        {
+            get { return _isPreviousEnabled; }
+            set
+            {
+                _isPreviousEnabled = value;
+                OnPropertyChanged(nameof(IsPreviousEnabled));
+            }
+        }
+        private bool _isNextEnabled;
+
+        public bool IsNextEnabled
+        {
+            get { return _isNextEnabled; }
+            set
+            {
+                _isNextEnabled = value;
+                OnPropertyChanged(nameof(IsNextEnabled));
+            }
+        }
+        private bool _isLastEnabled;
+
+        public bool IsLastEnabled
+        {
+            get { return _isLastEnabled; }
+            set
+            {
+                _isLastEnabled = value;
+                OnPropertyChanged(nameof(IsLastEnabled));
+            }
+        }
+        int RecordStartFrom = 0;
+        private void LastPage(object obj)
+        {
+            var recordsToskip = SelectedRecord * (NumberofPage - 1);
+            UpdateCollection(LstOfRecords.Skip(recordsToskip));
+            CurrentPage = NumberofPage;
+            UpdateEnableState();
+        }
+        private void FirstPage(object obj)
+        {
+            UpdateCollection(LstOfRecords.Take(SelectedRecord));
+            CurrentPage = 1;
+            UpdateEnableState();
+        }
+        private void PreviousPage(object obj)
+        {
+            CurrentPage--;
+            RecordStartFrom = LstOfRecords.Count - SelectedRecord * (NumberofPage - (CurrentPage - 1));
+            var recorsToShow = LstOfRecords.Skip(RecordStartFrom).Take(SelectedRecord);
+            UpdateCollection(recorsToShow);
+            UpdateEnableState();
+        }
+        private void NextPage(object obj)
+        {
+            RecordStartFrom = CurrentPage * SelectedRecord;
+            var recordsToShow = LstOfRecords.Skip(RecordStartFrom).Take(SelectedRecord);
+            UpdateCollection(recordsToShow);
+            CurrentPage++;
+            UpdateEnableState();
+        }
+
+        private void UpdateRecordCount()
+        {
+            NumberofPage = (int)Math.Ceiling((double)LstOfRecords.Count / SelectedRecord);
+            NumberofPage = NumberofPage == 0 ? 1 : NumberofPage;
+            UpdateCollection(LstOfRecords.Take(SelectedRecord));
+            CurrentPage = 1;
+        }
 
         public ICommand Addcommand { get; set; }
         public ICommand Editcommand { get; set; }
+        public ICommand FirstCommand { get; set; }
+        public ICommand PreviousCommand { get; set; }
+        public ICommand NextCommand { get; set; }
+        public ICommand LastCommand { get; set; }
+
+        public List<InputInfo> LstOfRecords { get; private set;  } = new List<InputInfo>();
         public InputViewModel()
         {
+           
             List = new ObservableCollection<InputInfo>(Dataprovider._Istance.DB.InputInfoes);
             Inputlist = new ObservableCollection<Input>(Dataprovider._Istance.DB.Inputs);
             Object = new ObservableCollection<Model.Object>(Dataprovider._Istance.DB.Objects);
             Unit = new ObservableCollection<Unit>(Dataprovider._Istance.DB.Units);
             Suplier = new ObservableCollection<Suplier>(Dataprovider._Istance.DB.Supliers);
+
             Addcommand = new RelayCommand<object>((p) =>
             {
                 return true;
@@ -137,6 +267,8 @@ namespace QuanlykhoWPF.ViewModel
                 Dataprovider._Istance.DB.InputInfoes.Add(InputIfo);
 
                 Dataprovider._Istance.DB.SaveChanges();
+                LstOfRecords.Add(InputIfo);
+                OnPropertyChanged(nameof(LstOfRecords));
                 List.Add(InputIfo);
                 
             });
@@ -158,10 +290,84 @@ namespace QuanlykhoWPF.ViewModel
               Inputedit.OutputPrice = OutputPrice;
               Inputedit.Status = Status;
               Dataprovider._Istance.DB.SaveChanges();
-              
+              //Loadpagination();
               Selectedobject.DisplayName = Displayname;
 
           });
+            #region Pagination
+            NextCommand = new RelayCommand<object>((p) => { return true; }, (p) =>
+            {
+                NextPage(p);
+            });
+            FirstCommand = new RelayCommand<object>((p) => { return true; }, (p) =>
+            {
+                FirstPage(p);
+            });
+            LastCommand = new RelayCommand<object>((p) => { return true; }, (p) =>
+            {
+                LastPage(p);
+            });
+            PreviousCommand = new RelayCommand<object>((p) => { return true; }, (p) =>
+            {
+                PreviousPage(p);
+            });
+            #endregion
+        }
+        public void Loadpagination()
+        {
+            List = new ObservableCollection<InputInfo>();
+            Inputlist = new ObservableCollection<Input>();
+            Object = new ObservableCollection<Model.Object>();
+            Loadpagination();
+            loadinput();
+            loadobject();
+            //var Object = new Model.Object() { Id = Guid.NewGuid().ToString(), DisplayName = Displayname, IdUnit = SelectedUnit.Id, IdSuplier = SelectedSuplier.Id };
+            Model.Object objects = new Model.Object();
+            var inputlist = Dataprovider._Istance.DB.InputInfoes;
+            foreach (var item in inputlist)
+            {
+                InputInfo inputInfo = new InputInfo();
+                inputInfo.Id = item.Id;
+                inputInfo.IdObject = item.IdObject;
+                inputInfo.IdInput = item.IdInput;
+                inputInfo.Count = item.Count;
+                inputInfo.InputPrice = item.InputPrice;
+                inputInfo.OutputPrice = item.OutputPrice;
+                inputInfo.Status = item.Status;
+                // inputdate.
+                LstOfRecords.Add(inputInfo);
+            }
+            UpdateCollection(LstOfRecords.Take(SelectedRecord));
+            UpdateRecordCount();
+
+        }
+        private void UpdateCollection(IEnumerable<InputInfo> input)
+        {
+               List.Clear();
+            foreach (var item in input)
+            {
+                List.Add(item);
+            }
+        }
+        public void loadinput()
+        {
+            var input = Dataprovider._Istance.DB.Inputs;
+            foreach (var item in input)
+            {
+                Input inputinfo = new Input();
+                inputinfo.DateInput = item.DateInput;
+                Inputlist.Add(inputinfo);
+            }
+        }
+        public void loadobject()
+        {
+            var Objectss = Dataprovider._Istance.DB.Objects;
+            foreach (var item in Objectss)
+            {
+                Model.Object objectinfo = new Model.Object();
+                objectinfo.DisplayName = item.DisplayName;
+                Object.Add(objectinfo);
+            }
         }
     }
 }

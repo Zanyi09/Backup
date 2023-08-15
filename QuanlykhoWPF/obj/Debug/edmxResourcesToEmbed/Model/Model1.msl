@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="QuanLyKhoModelStoreContainer" CdmEntityContainer="QuanLyKhoEntities1">
+  <EntityContainerMapping StorageEntityContainer="QuanlykhoModelStoreContainer" CdmEntityContainer="QuanlykhoEntities1">
     <EntitySetMapping Name="Customers">
-      <EntityTypeMapping TypeName="QuanLyKhoModel.Customer">
+      <EntityTypeMapping TypeName="QuanlykhoModel.Customer">
         <MappingFragment StoreEntitySet="Customer">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
@@ -15,7 +15,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Inputs">
-      <EntityTypeMapping TypeName="QuanLyKhoModel.Input">
+      <EntityTypeMapping TypeName="QuanlykhoModel.Input">
         <MappingFragment StoreEntitySet="Input">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="DateInput" ColumnName="DateInput" />
@@ -23,7 +23,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="InputInfoes">
-      <EntityTypeMapping TypeName="QuanLyKhoModel.InputInfo">
+      <EntityTypeMapping TypeName="QuanlykhoModel.InputInfo">
         <MappingFragment StoreEntitySet="InputInfo">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="IdObject" ColumnName="IdObject" />
@@ -36,7 +36,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Objects">
-      <EntityTypeMapping TypeName="QuanLyKhoModel.Object">
+      <EntityTypeMapping TypeName="QuanlykhoModel.Object">
         <MappingFragment StoreEntitySet="Object">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
@@ -48,7 +48,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Outputs">
-      <EntityTypeMapping TypeName="QuanLyKhoModel.Output">
+      <EntityTypeMapping TypeName="QuanlykhoModel.Output">
         <MappingFragment StoreEntitySet="Output">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="DateOutput" ColumnName="DateOutput" />
@@ -56,7 +56,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="OutputInfoes">
-      <EntityTypeMapping TypeName="QuanLyKhoModel.OutputInfo">
+      <EntityTypeMapping TypeName="QuanlykhoModel.OutputInfo">
         <MappingFragment StoreEntitySet="OutputInfo">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="IdObject" ColumnName="IdObject" />
@@ -68,7 +68,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Supliers">
-      <EntityTypeMapping TypeName="QuanLyKhoModel.Suplier">
+      <EntityTypeMapping TypeName="QuanlykhoModel.Suplier">
         <MappingFragment StoreEntitySet="Suplier">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
@@ -81,7 +81,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Units">
-      <EntityTypeMapping TypeName="QuanLyKhoModel.Unit">
+      <EntityTypeMapping TypeName="QuanlykhoModel.Unit">
         <MappingFragment StoreEntitySet="Unit">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
@@ -89,7 +89,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="UserRoles">
-      <EntityTypeMapping TypeName="QuanLyKhoModel.UserRole">
+      <EntityTypeMapping TypeName="QuanlykhoModel.UserRole">
         <MappingFragment StoreEntitySet="UserRole">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
@@ -97,7 +97,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Users">
-      <EntityTypeMapping TypeName="QuanLyKhoModel.User">
+      <EntityTypeMapping TypeName="QuanlykhoModel.User">
         <MappingFragment StoreEntitySet="Users">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />

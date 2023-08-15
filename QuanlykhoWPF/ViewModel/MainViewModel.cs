@@ -32,8 +32,8 @@ namespace QuanlykhoWPF.ViewModel
         public ICommand PreviousCommand { get; set; }
         public ICommand NextCommand { get; set; }
         public ICommand LastCommand { get; set; }
-        public string filePath = "C:/Users/ssvan/source/repos/QuanlykhoWPF/login.txt";
-
+        public string filePath = " C:/Users/IRTech/source/repos/QuanlykhoWPF/login.txt";
+        public List<Inventory> LstOfRecords { get; private set; } = new List<Inventory>();
         private int _currentPage =1;
         public int CurrentPage
         {
@@ -146,7 +146,7 @@ namespace QuanlykhoWPF.ViewModel
                 OnPropertyChanged();
             }
         }
-        //public List<Inventory> LstOfRecords { get; private set; } = new List<Inventory>();
+       
         int RecordStartFrom = 0;
         private void LastPage(object obj)
         {
@@ -185,7 +185,6 @@ namespace QuanlykhoWPF.ViewModel
             UpdateCollection(LstOfRecords.Take(SelectedRecord));
             CurrentPage = 1;
         }
-        public List<Inventory> LstOfRecords { get; private set; } = new List<Inventory>();
 
         public MainViewModel()
         {   
@@ -197,6 +196,7 @@ namespace QuanlykhoWPF.ViewModel
                     Login login1 = new Login();
                     login1.Close();
                     Loaddatatonkho();
+                    OnPropertyChanged(nameof(LstOfRecords));
                 }
                 else
                 {
@@ -212,6 +212,7 @@ namespace QuanlykhoWPF.ViewModel
                     if (LoginVM.IsLogin)
                     {
                         Loaddatatonkho();
+                        OnPropertyChanged(nameof(LstOfRecords));
                         p.Show();
 
                     }
@@ -265,9 +266,6 @@ namespace QuanlykhoWPF.ViewModel
                 {
                     File.Delete(filePath);
                     p.Close();
-                  //  Login login = new Login();
-                   // login.ShowDialog();
-                    
                 }
             });
             #region Pagination
@@ -325,14 +323,14 @@ namespace QuanlykhoWPF.ViewModel
                 LstOfRecords.Add(inventory);
                 i++;  
             }
-
+            OnPropertyChanged(nameof(LstOfRecords));
             UpdateCollection(LstOfRecords.Take(SelectedRecord));
             UpdateRecordCount();
 
         }
         private void UpdateCollection(IEnumerable<Inventory> iven)
         {
-           // Tonkholist.Clear();
+          //  Tonkholist.Clear();
             foreach (var item in iven)
             {
                 Tonkholist.Add(item);

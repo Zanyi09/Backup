@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\ssvan\source\repos\QuanlykhoWPF\QuanlykhoWPF\obj\Debug\
+C:\Users\IRTech\source\repos\QuanlykhoWPF\QuanlykhoWPF\obj\Debug\
 QuanlykhoWPF
 none
 false
 DEBUG;TRACE
-C:\Users\ssvan\source\repos\QuanlykhoWPF\QuanlykhoWPF\App.xaml
+C:\Users\IRTech\source\repos\QuanlykhoWPF\QuanlykhoWPF\App.xaml
 121708076712
 2739969757
 411013078297
-24967705077
+244214331
 CustomerWindow.xaml;InputWindow.xaml;Login.xaml;MainWindow.xaml;ObjectWindow.xaml;OutputWindow.xaml;Resource\MainResource.xaml;SupplierWindow.xaml;UnitWindow.xaml;UserControlVD\UserControlBarVD.xaml;UserControlVD\UsernameBar.xaml;UserWindow.xaml;
 
-True
+False
 

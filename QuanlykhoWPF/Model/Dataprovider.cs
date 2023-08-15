@@ -19,10 +19,10 @@ namespace QuanlykhoWPF.Model
             }
             set { _istance = value; }
         }
-        public QuanLyKhoEntities1 DB { get; set; }
+        public QuanlykhoEntities1 DB { get; set; }
         private Dataprovider()
         {
-            DB = new QuanLyKhoEntities1();
+            DB = new QuanlykhoEntities1();
         }
     }
 }

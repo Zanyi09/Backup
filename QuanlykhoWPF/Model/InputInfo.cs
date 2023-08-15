@@ -9,20 +9,34 @@
 
 namespace QuanlykhoWPF.Model
 {
+    using QuanlykhoWPF.ViewModel;
     using System;
     using System.Collections.Generic;
     
-    public partial class InputInfo
+    public partial class InputInfo : BaseViewModel
     {
-        public string Id { get; set; }
-        public string IdObject { get; set; }
-        public string IdInput { get; set; }
-        public Nullable<int> Count { get; set; }
-        public Nullable<double> InputPrice { get; set; }
-        public Nullable<double> OutputPrice { get; set; }
-        public string Status { get; set; }
-    
-        public virtual Input Input { get; set; }
-        public virtual Object Object { get; set; }
+        private string _id;
+        public string Id { get => _id; set { _id = value; OnPropertyChanged(); } }
+        private string _IdObject;
+        public string IdObject { get => _IdObject; set { _IdObject = value; OnPropertyChanged(); } }
+        private string _IdInput;
+        public string IdInput { get => _IdInput; set { _IdInput = value; OnPropertyChanged(); } }
+        private Nullable<int> _Count;
+        public Nullable<int> Count { get => _Count; set { _Count = value; OnPropertyChanged(); } }
+        private Nullable<double> _InputPrice;
+        public Nullable<double> InputPrice { get => _InputPrice; set { _InputPrice = value; OnPropertyChanged(); } }
+        private Nullable<double> _OutputPrice;
+        public Nullable<double> OutputPrice { get => _OutputPrice; set { _OutputPrice = value; OnPropertyChanged(); } }
+        private string _Status;
+        public string Status { get => _Status; set { _Status = value; OnPropertyChanged(); } }
+
+        private Input _input;
+        public virtual Input Input { get => _input; set { _input = value; OnPropertyChanged(); } }
+        private Object _object;
+        public virtual Object Object { get => _object; set { _object = value; OnPropertyChanged(); } }
+
+        //private  _object;
+       // public virtual Object Object { get => _object; set { _object = value; OnPropertyChanged(); } }
+
     }
 }

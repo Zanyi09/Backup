@@ -363,10 +363,10 @@
                                       Style="{StaticResource MaterialDesignFloatingActionButton}" />
                                 </Grid>
                             </Grid>
-                            <Grid Grid.Row="1" Margin="-10 -40 0 0">
+                            <Grid Grid.Row="1" Margin="10 -40 0 0">
                                 <Grid.RowDefinitions>
                                     <RowDefinition></RowDefinition>
-                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition Height="40"></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <ListView ItemsSource="{Binding Tonkholist}" Grid.Row="0">
                                     <ListView.View>
@@ -381,7 +381,7 @@
                                     </ListView.View>
                                 </ListView>
                                 <StackPanel Grid.Row="1" HorizontalAlignment="Center" Orientation="Horizontal">
-                                    <TextBlock Text="Hiển thị trang" Margin="15">
+                                    <TextBlock Text="Hiển thị trang" Margin="10">
                                     </TextBlock>
                                     <ComboBox Margin="5" SelectedIndex="0"  SelectedItem="{Binding SelectedRecord, UpdateSourceTrigger=PropertyChanged}">
                                         <sys:Int32>5</sys:Int32>
@@ -389,8 +389,8 @@
                                         <sys:Int32>15</sys:Int32>
                                         <sys:Int32>20</sys:Int32>
                                     </ComboBox>
-                                    <Button Content="&lt;&lt;" IsEnabled="{Binding IsFirstEnabled}"  Command="{Binding FirstCommand}" ToolTip="Fist page" Margin="5"></Button>
-                                    <Button Content="&lt;" IsEnabled="{Binding IsPreviousEnabled}" Command="{Binding PreviousCommand}" ToolTip="Previous page" Margin="5"></Button>
+                                    <Button Height="23" Content="&lt;&lt;" IsEnabled="{Binding IsFirstEnabled}"  Command="{Binding FirstCommand}" ToolTip="Fist page" Margin="5"></Button>
+                                    <Button Height="23" Content="&lt;" IsEnabled="{Binding IsPreviousEnabled}" Command="{Binding PreviousCommand}" ToolTip="Previous page" Margin="5"></Button>
                                     <TextBlock VerticalAlignment="Center">
                                         <TextBlock.Text>
                                             <MultiBinding StringFormat="{} {0} of {1}">
@@ -399,8 +399,8 @@
                                             </MultiBinding>
                                         </TextBlock.Text>
                                     </TextBlock>
-                                    <Button Content=">" Margin="5" IsEnabled="{Binding IsNextEnabled}" Command="{Binding NextCommand}" ToolTip="Next page"></Button>
-                                    <Button Content=">>" Margin="5" IsEnabled="{Binding IsLastEnabled}" Command="{Binding LastCommand}" ToolTip="Last page"></Button>
+                                    <Button Height="23" Content=">" Margin="5" IsEnabled="{Binding IsNextEnabled}" Command="{Binding NextCommand}" ToolTip="Next page"></Button>
+                                    <Button Height="23" Content=">>" Margin="5" IsEnabled="{Binding IsLastEnabled}" Command="{Binding LastCommand}" ToolTip="Last page"></Button>
                                 </StackPanel>
                             </Grid>
                         </Grid>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="QuanLyKhoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="QuanlykhoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Customer">
     <Key>
       <PropertyRef Name="Id" />
@@ -96,7 +96,7 @@
     <Property Name="Password" Type="nvarchar(max)" />
     <Property Name="IdRole" Type="int" Nullable="false" />
   </EntityType>
-  <Association Name="FK__InputInfo__IdInp__4BAC3F29">
+  <Association Name="FK__InputInfo__IdInp__38996AB5">
     <End Role="Input" Type="Self.Input" Multiplicity="1" />
     <End Role="InputInfo" Type="Self.InputInfo" Multiplicity="*" />
     <ReferentialConstraint>
@@ -108,7 +108,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__InputInfo__IdObj__4CA06362">
+  <Association Name="FK__InputInfo__IdObj__398D8EEE">
     <End Role="Object" Type="Self.Object" Multiplicity="1" />
     <End Role="InputInfo" Type="Self.InputInfo" Multiplicity="*" />
     <ReferentialConstraint>
@@ -120,7 +120,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Object__IdSuplie__4E88ABD4">
+  <Association Name="FK__Object__IdSuplie__3A81B327">
     <End Role="Suplier" Type="Self.Suplier" Multiplicity="1" />
     <End Role="Object" Type="Self.Object" Multiplicity="*" />
     <ReferentialConstraint>
@@ -132,7 +132,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Object__IdUnit__4D94879B">
+  <Association Name="FK__Object__IdUnit__3B75D760">
     <End Role="Unit" Type="Self.Unit" Multiplicity="1" />
     <End Role="Object" Type="Self.Object" Multiplicity="*" />
     <ReferentialConstraint>
@@ -144,7 +144,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__OutputInf__IdCus__4F7CD00D">
+  <Association Name="FK__OutputInf__IdCus__3C69FB99">
     <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
     <End Role="OutputInfo" Type="Self.OutputInfo" Multiplicity="*" />
     <ReferentialConstraint>
@@ -156,7 +156,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__OutputInf__IdObj__5070F446">
+  <Association Name="FK__OutputInf__IdObj__3D5E1FD2">
     <End Role="Object" Type="Self.Object" Multiplicity="1" />
     <End Role="OutputInfo" Type="Self.OutputInfo" Multiplicity="*" />
     <ReferentialConstraint>
@@ -168,7 +168,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__OutputInfo__Id__412EB0B6">
+  <Association Name="FK__OutputInfo__Id__3E52440B">
     <End Role="Output" Type="Self.Output" Multiplicity="1" />
     <End Role="OutputInfo" Type="Self.OutputInfo" Multiplicity="0..1" />
     <ReferentialConstraint>
@@ -180,7 +180,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Users__IdRole__5165187F">
+  <Association Name="FK__Users__IdRole__3F466844">
     <End Role="UserRole" Type="Self.UserRole" Multiplicity="1" />
     <End Role="Users" Type="Self.Users" Multiplicity="*" />
     <ReferentialConstraint>
@@ -192,7 +192,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="QuanLyKhoModelStoreContainer">
+  <EntityContainer Name="QuanlykhoModelStoreContainer">
     <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Input" EntityType="Self.Input" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="InputInfo" EntityType="Self.InputInfo" Schema="dbo" store:Type="Tables" />
@@ -203,35 +203,35 @@
     <EntitySet Name="Unit" EntityType="Self.Unit" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__InputInfo__IdInp__4BAC3F29" Association="Self.FK__InputInfo__IdInp__4BAC3F29">
+    <AssociationSet Name="FK__InputInfo__IdInp__38996AB5" Association="Self.FK__InputInfo__IdInp__38996AB5">
       <End Role="Input" EntitySet="Input" />
       <End Role="InputInfo" EntitySet="InputInfo" />
     </AssociationSet>
-    <AssociationSet Name="FK__InputInfo__IdObj__4CA06362" Association="Self.FK__InputInfo__IdObj__4CA06362">
+    <AssociationSet Name="FK__InputInfo__IdObj__398D8EEE" Association="Self.FK__InputInfo__IdObj__398D8EEE">
       <End Role="Object" EntitySet="Object" />
       <End Role="InputInfo" EntitySet="InputInfo" />
     </AssociationSet>
-    <AssociationSet Name="FK__Object__IdSuplie__4E88ABD4" Association="Self.FK__Object__IdSuplie__4E88ABD4">
+    <AssociationSet Name="FK__Object__IdSuplie__3A81B327" Association="Self.FK__Object__IdSuplie__3A81B327">
       <End Role="Suplier" EntitySet="Suplier" />
       <End Role="Object" EntitySet="Object" />
     </AssociationSet>
-    <AssociationSet Name="FK__Object__IdUnit__4D94879B" Association="Self.FK__Object__IdUnit__4D94879B">
+    <AssociationSet Name="FK__Object__IdUnit__3B75D760" Association="Self.FK__Object__IdUnit__3B75D760">
       <End Role="Unit" EntitySet="Unit" />
       <End Role="Object" EntitySet="Object" />
     </AssociationSet>
-    <AssociationSet Name="FK__OutputInf__IdCus__4F7CD00D" Association="Self.FK__OutputInf__IdCus__4F7CD00D">
+    <AssociationSet Name="FK__OutputInf__IdCus__3C69FB99" Association="Self.FK__OutputInf__IdCus__3C69FB99">
       <End Role="Customer" EntitySet="Customer" />
       <End Role="OutputInfo" EntitySet="OutputInfo" />
     </AssociationSet>
-    <AssociationSet Name="FK__OutputInf__IdObj__5070F446" Association="Self.FK__OutputInf__IdObj__5070F446">
+    <AssociationSet Name="FK__OutputInf__IdObj__3D5E1FD2" Association="Self.FK__OutputInf__IdObj__3D5E1FD2">
       <End Role="Object" EntitySet="Object" />
       <End Role="OutputInfo" EntitySet="OutputInfo" />
     </AssociationSet>
-    <AssociationSet Name="FK__OutputInfo__Id__412EB0B6" Association="Self.FK__OutputInfo__Id__412EB0B6">
+    <AssociationSet Name="FK__OutputInfo__Id__3E52440B" Association="Self.FK__OutputInfo__Id__3E52440B">
       <End Role="Output" EntitySet="Output" />
       <End Role="OutputInfo" EntitySet="OutputInfo" />
     </AssociationSet>
-    <AssociationSet Name="FK__Users__IdRole__5165187F" Association="Self.FK__Users__IdRole__5165187F">
+    <AssociationSet Name="FK__Users__IdRole__3F466844" Association="Self.FK__Users__IdRole__3F466844">
       <End Role="UserRole" EntitySet="UserRole" />
       <End Role="Users" EntitySet="Users" />
     </AssociationSet>

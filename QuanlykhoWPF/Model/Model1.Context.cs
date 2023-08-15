@@ -13,10 +13,10 @@ namespace QuanlykhoWPF.Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class QuanLyKhoEntities1 : DbContext
+    public partial class QuanlykhoEntities1 : DbContext
     {
-        public QuanLyKhoEntities1()
-            : base("name=QuanLyKhoEntities1")
+        public QuanlykhoEntities1()
+            : base("name=QuanlykhoEntities1")
         {
         }
     

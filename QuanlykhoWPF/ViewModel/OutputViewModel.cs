@@ -46,7 +46,7 @@ namespace QuanlykhoWPF.ViewModel
                     Count = SelectedItem.Count;
                     OutputPrice = SelectedItem.OutputPrice;
                     Status = SelectedItem.Status;
-                    //SelectedOutput = SelectedItem.Object;
+                   // SelectedOutput = SelectedItem.Object;
                     Selectedobject = SelectedItem.Object;
                 }
             }
@@ -77,6 +77,16 @@ namespace QuanlykhoWPF.ViewModel
             set
             {
                 _Selectedobject = value; OnPropertyChanged();
+                Displayname = _Selectedobject.DisplayName;
+            }
+        }
+        private Customer _selectedCustomer;
+        public Customer Customers
+        {
+            get => _selectedCustomer;
+            set
+            {
+                _selectedCustomer = value; OnPropertyChanged();
                 Displayname = _Selectedobject.DisplayName;
             }
         }
@@ -120,7 +130,7 @@ namespace QuanlykhoWPF.ViewModel
             (p) =>
             {
                 //var Input = new Input() { Id = Guid.NewGuid().ToString(), DateInput = DateInput };
-                Dataprovider._Istance.DB.Inputs.Add(Input);
+                //Dataprovider._Istance.DB.Inputs.Add(Input);
                 var Unit = new Model.Unit() { };
                 var Supplier = new Model.Suplier() { };
                 var Object = new Model.Object() { Id = Guid.NewGuid().ToString(), DisplayName = Displayname, IdUnit = Unit.Id, IdSuplier = Supplier.Id };
@@ -128,11 +138,11 @@ namespace QuanlykhoWPF.ViewModel
                 Dataprovider._Istance.DB.Objects.Add(Object);
                 Dataprovider._Istance.DB.Units.Add(Unit);
                 Dataprovider._Istance.DB.Supliers.Add(Supplier);
-                var InputIfo = new InputInfo() { Id = Guid.NewGuid().ToString(), IdObject = Object.Id, IdInput = Input.Id, Count = Count, InputPrice = InputPrice, OutputPrice = OutputPrice, Status = Status };
-                Dataprovider._Istance.DB.InputInfoes.Add(InputIfo);
+               // var InputIfo = new InputInfo() { Id = Guid.NewGuid().ToString(), IdObject = Object.Id, IdInput = Input.Id, Count = Count, InputPrice = InputPrice, OutputPrice = OutputPrice, Status = Status };
+               // Dataprovider._Istance.DB.InputInfoes.Add(InputIfo);
 
                 Dataprovider._Istance.DB.SaveChanges();
-                List.Add(InputIfo);
+              //  List.Add(InputIfo);
 
             });
 
@@ -144,12 +154,12 @@ namespace QuanlykhoWPF.ViewModel
           {
               var Inputedit = Dataprovider._Istance.DB.InputInfoes.Where(a => a.Id == SelectedItem.Id).SingleOrDefault();
               var nameedit = Dataprovider._Istance.DB.Objects.Where(b => b.DisplayName == Selectedobject.DisplayName).FirstOrDefault();
-             // var dateedit = Dataprovider._Istance.DB.Inputs.Where(c => c.DateInput == SelectedInput.DateInput).FirstOrDefault();
+              var dateedit = Dataprovider._Istance.DB.Outputs.Where(c => c.DateOutput == SelectedOutput.DateOutput).FirstOrDefault();
+              //var Customeredit = Dataprovider._Istance.DB.Customers.Where(c => c.DateOutput == SelectedOutput.DateOutput).FirstOrDefault();
               Inputedit.IdObject = IdObject;
               nameedit.DisplayName = Displayname;
-             // dateedit.DateInput = DateInput;
+              dateedit.DateOutput = DateOutput;
               Inputedit.Count = Count;
-              Inputedit.InputPrice = InputPrice;
               Inputedit.OutputPrice = OutputPrice;
               Inputedit.Status = Status;
               Dataprovider._Istance.DB.SaveChanges();
