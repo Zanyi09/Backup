@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanlykhoWPF.Views;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace QuanlykhoWPF.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    class RelayCommand<T> : ICommand
+    public class RelayCommand<T> : ICommand
     {
         private readonly Predicate<T> _canExecute;
         private readonly Action<T> _execute;

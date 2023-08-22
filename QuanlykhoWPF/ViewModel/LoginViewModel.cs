@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms;
 using System.Windows.Input;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
@@ -15,7 +16,6 @@ namespace QuanlykhoWPF.ViewModel
 {
     public class LoginViewModel : BaseViewModel
     {
-        //string FilePath = "login.txt";
         public bool IsLogin { get; set; }
         private string _username;
         public string Username { get => _username; set => _username = value; }
@@ -31,21 +31,46 @@ namespace QuanlykhoWPF.ViewModel
             Password = "";
             IsLogin = false;
             Logincommand = new RelayCommand<Window>((p) => { return true; }, (p) => { Login(p); });
-            Exitcommand = new RelayCommand<Window>((p) => { return true; }, (p) => { p.Close(); });
+            Exitcommand = new RelayCommand<Window>((p) => { return true; }, (p) => {
+                FrameworkElement window = GetWindowParent(p);
+                var w = window as Window;
+                if (w != null)
+                {
+                    DialogResult dialogResult = System.Windows.Forms.MessageBox.Show("Bạn có muốn thoát không?", "Thông báo", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        w.Close();
+                    }
+
+                }
+            });
             Passwordcommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) => { Password = p.Password; });
         }
+
+        private FrameworkElement GetWindowParent(Window p)
+        {
+            FrameworkElement parent = p;
+
+            while (parent.Parent != null)
+            {
+                parent = parent.Parent as FrameworkElement;
+            }
+
+            return parent;
+        }
+
         public void Login(Window p)
         {
-
             if (p == null)
                 return;
             string passencode = MD5Hash(Base64Encode(Password));
             var account = Dataprovider._Istance.DB.Users.Where(x => x.UserName == Username && x.Password == passencode).Count();
             if (account > 0)
             {
-                string token = GenerateToken(32);
-                File.WriteAllText(filePath, token);
-                //MessageBox.Show(token);
+
+               // string token = GenerateToken(32);
+                File.WriteAllText(filePath, Username);
+                //System.Windows.MessageBox.Show(token);
                 IsLogin = true;
 
                 p.Close();
@@ -53,8 +78,9 @@ namespace QuanlykhoWPF.ViewModel
             else
             {
                 IsLogin = false;
-                MessageBox.Show("Sai mật khẩu hoặc tài khoản!");
+                System.Windows.MessageBox.Show("Sai mật khẩu hoặc tài khoản!");
             }
+            
 
         }
 

@@ -13,10 +13,10 @@ namespace QuanlykhoWPF.Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class QuanlykhoEntities1 : DbContext
+    public partial class QuanLyKhoEntities : DbContext
     {
-        public QuanlykhoEntities1()
-            : base("name=QuanlykhoEntities1")
+        public QuanLyKhoEntities()
+            : base("name=QuanLyKhoEntities")
         {
         }
     
@@ -31,6 +31,7 @@ namespace QuanlykhoWPF.Model
         public virtual DbSet<Object> Objects { get; set; }
         public virtual DbSet<Output> Outputs { get; set; }
         public virtual DbSet<OutputInfo> OutputInfoes { get; set; }
+        public virtual DbSet<Report> Reports { get; set; }
         public virtual DbSet<Suplier> Supliers { get; set; }
         public virtual DbSet<Unit> Units { get; set; }
         public virtual DbSet<UserRole> UserRoles { get; set; }

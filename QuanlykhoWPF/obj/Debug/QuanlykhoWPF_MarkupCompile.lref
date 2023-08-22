@@ -1,15 +1,13 @@
 ﻿
-FC:\Users\IRTech\source\repos\QuanlykhoWPF\QuanlykhoWPF\App.xaml;;
-FC:\Users\IRTech\source\repos\QuanlykhoWPF\QuanlykhoWPF\CustomerWindow.xaml;;
-FC:\Users\IRTech\source\repos\QuanlykhoWPF\QuanlykhoWPF\InputWindow.xaml;;
-FC:\Users\IRTech\source\repos\QuanlykhoWPF\QuanlykhoWPF\Login.xaml;;
-FC:\Users\IRTech\source\repos\QuanlykhoWPF\QuanlykhoWPF\MainWindow.xaml;;
-FC:\Users\IRTech\source\repos\QuanlykhoWPF\QuanlykhoWPF\ObjectWindow.xaml;;
-FC:\Users\IRTech\source\repos\QuanlykhoWPF\QuanlykhoWPF\OutputWindow.xaml;;
+FC:\Users\IRTech\source\repos\QuanlykhoWPF\QuanlykhoWPF\Views\App.xaml;;
+FC:\Users\IRTech\source\repos\QuanlykhoWPF\QuanlykhoWPF\Views\CustomerWindow.xaml;;
+FC:\Users\IRTech\source\repos\QuanlykhoWPF\QuanlykhoWPF\Views\HomeWindow.xaml;;
+FC:\Users\IRTech\source\repos\QuanlykhoWPF\QuanlykhoWPF\Views\Login.xaml;;
+FC:\Users\IRTech\source\repos\QuanlykhoWPF\QuanlykhoWPF\Views\MainWindow.xaml;;
 FC:\Users\IRTech\source\repos\QuanlykhoWPF\QuanlykhoWPF\Resource\MainResource.xaml;;
-FC:\Users\IRTech\source\repos\QuanlykhoWPF\QuanlykhoWPF\SupplierWindow.xaml;;
-FC:\Users\IRTech\source\repos\QuanlykhoWPF\QuanlykhoWPF\UnitWindow.xaml;;
 FC:\Users\IRTech\source\repos\QuanlykhoWPF\QuanlykhoWPF\UserControlVD\UserControlBarVD.xaml;;
 FC:\Users\IRTech\source\repos\QuanlykhoWPF\QuanlykhoWPF\UserControlVD\UsernameBar.xaml;;
-FC:\Users\IRTech\source\repos\QuanlykhoWPF\QuanlykhoWPF\UserWindow.xaml;;
+FC:\Users\IRTech\source\repos\QuanlykhoWPF\QuanlykhoWPF\Views\SupplierWindow.xaml;;
+FC:\Users\IRTech\source\repos\QuanlykhoWPF\QuanlykhoWPF\Views\UnitWindow.xaml;;
+FC:\Users\IRTech\source\repos\QuanlykhoWPF\QuanlykhoWPF\Views\ObjectWindow.xaml;;
 

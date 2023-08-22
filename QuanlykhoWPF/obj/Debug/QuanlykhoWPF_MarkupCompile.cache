@@ -9,12 +9,12 @@ QuanlykhoWPF
 none
 false
 DEBUG;TRACE
-C:\Users\IRTech\source\repos\QuanlykhoWPF\QuanlykhoWPF\App.xaml
-121708076712
+C:\Users\IRTech\source\repos\QuanlykhoWPF\QuanlykhoWPF\Views\App.xaml
+12118648967
 2739969757
-411013078297
-244214331
-CustomerWindow.xaml;InputWindow.xaml;Login.xaml;MainWindow.xaml;ObjectWindow.xaml;OutputWindow.xaml;Resource\MainResource.xaml;SupplierWindow.xaml;UnitWindow.xaml;UserControlVD\UserControlBarVD.xaml;UserControlVD\UsernameBar.xaml;UserWindow.xaml;
+38-856928771
+26-861385033
+Views\CustomerWindow.xaml;Views\HomeWindow.xaml;Views\Login.xaml;Views\MainWindow.xaml;Resource\MainResource.xaml;Styles\ButtonStyle.xaml;Styles\UIcolor.xaml;UserControlVD\UserControlBarVD.xaml;UserControlVD\UsernameBar.xaml;Views\ObjectWindow.xaml;Views\SupplierWindow.xaml;Views\UnitWindow.xaml;
 
-True
+False
 

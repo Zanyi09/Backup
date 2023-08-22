@@ -8,6 +8,7 @@ namespace QuanlykhoWPF.Model
 {
     public class Dataprovider
     {
+        
         private static Dataprovider _istance;
         public static Dataprovider _Istance
         {
@@ -19,10 +20,11 @@ namespace QuanlykhoWPF.Model
             }
             set { _istance = value; }
         }
-        public QuanlykhoEntities1 DB { get; set; }
+        public QuanLyKhoEntities DB { get; set; }
         private Dataprovider()
         {
-            DB = new QuanlykhoEntities1();
+            DB = new QuanLyKhoEntities();
         }
+        
     }
 }

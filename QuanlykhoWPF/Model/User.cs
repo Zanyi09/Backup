@@ -9,24 +9,17 @@
 
 namespace QuanlykhoWPF.Model
 {
-    using QuanlykhoWPF.ViewModel;
     using System;
     using System.Collections.Generic;
     
-    public partial class User : BaseViewModel
+    public partial class User
     {
-        private int _id;
-        public int Id { get => _id; set { _id = value; OnPropertyChanged(); } }
-        private string _DisplayName;
-        public string DisplayName { get => _DisplayName; set { _DisplayName = value; OnPropertyChanged(); } }
-        private string _UserName;
-        public string UserName { get => _UserName; set { _UserName = value; OnPropertyChanged(); } }
-        private string _Password;
-        public string Password { get => _Password; set { _Password = value; OnPropertyChanged(); } }
-        private int _IdRole;
-        public int IdRole { get => _IdRole; set { _IdRole = value; OnPropertyChanged(); } }
-
-
+        public int Id { get; set; }
+        public string DisplayName { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
+        public int IdRole { get; set; }
+    
         public virtual UserRole UserRole { get; set; }
     }
 }
