@@ -9,10 +9,11 @@
 
 namespace QuanlykhoWPF.Model
 {
+    using QuanlykhoWPF.ViewModel;
     using System;
     using System.Collections.Generic;
     
-    public partial class Suplier
+    public partial class Suplier : BaseViewModel
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Suplier()
@@ -20,15 +21,22 @@ namespace QuanlykhoWPF.Model
             this.Objects = new HashSet<Object>();
             this.Reports = new HashSet<Report>();
         }
-    
-        public int Id { get; set; }
-        public string DisplayName { get; set; }
-        public string Address { get; set; }
-        public string Phone { get; set; }
-        public string Email { get; set; }
-        public string MoreInfo { get; set; }
-        public Nullable<System.DateTime> ContractDate { get; set; }
-    
+
+        private int _id;
+        public int Id { get => _id; set { _id = value; OnPropertyChanged(); } }
+        private string _displayname;
+        public string DisplayName { get => _displayname; set { _displayname = value; OnPropertyChanged(); } }
+        private string _address;
+        public string Address { get => _address; set { _address = value; OnPropertyChanged(); } }
+        private string _Phone;
+        public string Phone { get => _Phone; set { _Phone = value; OnPropertyChanged(); } }
+        private string _Email;
+        public string Email { get => _Email; set { _Email = value; OnPropertyChanged(); } }
+        private string _MoreInfo;
+        public string MoreInfo { get => _MoreInfo; set { _MoreInfo = value; OnPropertyChanged(); } }
+        private Nullable<System.DateTime> _ContractDate;
+        public Nullable<System.DateTime> ContractDate { get=> _ContractDate; set { _ContractDate = value; OnPropertyChanged(); } }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Object> Objects { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -46,6 +46,12 @@
         <DataTemplate DataType="{x:Type uc:MainViewModel}">
             <local1:ObjectWindow/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type uc:StaffViewModel}">
+            <local1:StaffWindow/>
+        </DataTemplate> 
+        <DataTemplate DataType="{x:Type uc:InputViewModel}">
+            <local1:InputWindow/>
+        </DataTemplate>
     </Window.Resources>
     <Border CornerRadius="10"                    
             BorderThickness="1">
@@ -131,7 +137,7 @@
                     </RadioButton>
                     <RadioButton Style="{StaticResource menuButton}"
                                 Tag="{StaticResource color4}"
-                                Command="{Binding ShowCustomerViewCommand}">
+                                Command="{Binding ShowHomeInput}">
                         <StackPanel Orientation="Horizontal">
                             <fa:IconImage Icon="ArrowAltCircleDown" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="Nhập hàng" Style="{StaticResource menuButtonText}"/>
@@ -147,7 +153,7 @@
                     </RadioButton>
                     <RadioButton Style="{StaticResource menuButton}"
                                  Tag="{StaticResource color5}"
-                                 Command="{Binding ShowCustomerViewCommand}">
+                                 Command="{Binding ShowHomeStaff}">
                         <StackPanel Orientation="Horizontal">
                             <fa:IconImage Icon="Person" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="Nhân viên" Style="{StaticResource menuButtonText}"/>

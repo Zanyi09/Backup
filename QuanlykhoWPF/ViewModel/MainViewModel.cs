@@ -41,6 +41,8 @@ namespace QuanlykhoWPF.ViewModel
         public ICommand ShowHomeSupplier { get; set; }
         public ICommand ShowHomeUnit { get; set; }       
         public ICommand ShowHomeObject { get; set; }
+        public ICommand ShowHomeStaff { get; set; }
+        public ICommand ShowHomeInput { get; set; }
         public MainViewModel() 
         {
            
@@ -96,30 +98,50 @@ namespace QuanlykhoWPF.ViewModel
                 CurrentChildView = new HomeViewModel();
                 Caption = "Trang chủ";
                 Icon = IconChar.Home;
+                OnPropertyChanged(nameof(InputViewModel));
+
             });
             ShowHomeCustomer = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 CurrentChildView = new CustomerViewModel();
                 Caption = "Khách hàng";
                 Icon = IconChar.UserGroup;
+                OnPropertyChanged(nameof(InputViewModel));
             }); 
             ShowHomeSupplier = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 CurrentChildView = new SupplierViewModel();
                 Caption = "Nhà cung cấp";
                 Icon = IconChar.Truck;
+                OnPropertyChanged(nameof(InputViewModel));
             });
             ShowHomeUnit = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
-                CurrentChildView = new UnitViewModel();
+                CurrentChildView = new UnitViewModel();;
                 Caption = "Đơn vị đo";
                 Icon = IconChar.K;
+                OnPropertyChanged(nameof(InputViewModel));
             });
             ShowHomeObject = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 CurrentChildView = new MainViewModel();
                 Caption = "Vật tư";
                 Icon = IconChar.Truck;
+                OnPropertyChanged(nameof(InputViewModel));
+            });  
+            ShowHomeStaff = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                CurrentChildView = new StaffViewModel();
+                Caption = "Nhân viên";
+                Icon = IconChar.Person;
+                OnPropertyChanged();
+            });
+            ShowHomeInput = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                CurrentChildView = new InputViewModel();
+                Caption = "Nhập hàng";
+                Icon = IconChar.ArrowAltCircleDown;
+                OnPropertyChanged(nameof(InputViewModel));
             });
         }
     }

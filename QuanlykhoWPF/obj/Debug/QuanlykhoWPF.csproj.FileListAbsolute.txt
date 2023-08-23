@@ -110,3 +110,7 @@ C:\Users\IRTech\source\repos\QuanlykhoWPF\QuanlykhoWPF\obj\Debug\Views\UnitWindo
 C:\Users\IRTech\source\repos\QuanlykhoWPF\QuanlykhoWPF\obj\Debug\Views\UnitWindow.baml
 C:\Users\IRTech\source\repos\QuanlykhoWPF\QuanlykhoWPF\obj\Debug\Views\ObjectWindow.g.cs
 C:\Users\IRTech\source\repos\QuanlykhoWPF\QuanlykhoWPF\obj\Debug\Views\ObjectWindow.baml
+C:\Users\IRTech\source\repos\QuanlykhoWPF\QuanlykhoWPF\obj\Debug\Views\StaffWindow.g.cs
+C:\Users\IRTech\source\repos\QuanlykhoWPF\QuanlykhoWPF\obj\Debug\Views\StaffWindow.baml
+C:\Users\IRTech\source\repos\QuanlykhoWPF\QuanlykhoWPF\obj\Debug\Views\InputWindow.g.cs
+C:\Users\IRTech\source\repos\QuanlykhoWPF\QuanlykhoWPF\obj\Debug\Views\InputWindow.baml

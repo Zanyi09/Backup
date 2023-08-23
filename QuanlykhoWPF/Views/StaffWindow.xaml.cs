@@ -16,18 +16,13 @@ using System.Windows.Shapes;
 namespace QuanlykhoWPF.Views
 {
     /// <summary>
-    /// Interaction logic for UnitWindow.xaml
+    /// Interaction logic for StaffWindow.xaml
     /// </summary>
-    public partial class UnitWindow : UserControl
+    public partial class StaffWindow : UserControl
     {
-        public UnitWindow()
+        public StaffWindow()
         {
             InitializeComponent();
-        }
-
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
