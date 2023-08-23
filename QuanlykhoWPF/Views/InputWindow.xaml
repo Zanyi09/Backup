@@ -240,7 +240,7 @@ VerticalAlignment="Center">
                     </ComboBox>
                     <Button Height="23" Content="&lt;&lt;" IsEnabled="{Binding IsFirstEnabled}"  Command="{Binding FirstCommand}" ToolTip="Fist page" Margin="5"></Button>
                     <Button Height="23" Content="&lt;" IsEnabled="{Binding IsPreviousEnabled}" Command="{Binding PreviousCommand}" ToolTip="Previous page" Margin="5"></Button>
-                    <TextBlock VerticalAlignment="Center">
+                    <TextBlock VerticalAlignment="Center" Background="White">
                         <TextBlock.Text>
                             <MultiBinding StringFormat="{} {0} of {1}">
                                 <Binding Path="CurrentPage"/>
