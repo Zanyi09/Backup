@@ -9,18 +9,31 @@
 
 namespace QuanlykhoWPF.Model
 {
+    using QuanlykhoWPF.ViewModel;
     using System;
     using System.Collections.Generic;
-    
-    public partial class Report
+
+    public partial class Report : BaseViewModel
     {
-        public int Id { get; set; }
-        public int IdSuplier { get; set; }
-        public string IdObject { get; set; }
-        public Nullable<int> Quantitysp { get; set; }
-        public Nullable<int> Quantityob { get; set; }
-    
-        public virtual Object Object { get; set; }
-        public virtual Suplier Suplier { get; set; }
+        private int _id;
+        public int Id { get => _id; set { _id = value; OnPropertyChanged(); } }
+        private int _IdSuplier;
+        public int IdSuplier { get => _IdSuplier; set { _IdSuplier = value; OnPropertyChanged(); } }
+        private string _IdObject;
+        public string IdObject { get => _IdObject; set { _IdObject = value; OnPropertyChanged(); } }
+
+        private string _displaysuplier;
+        public string Displaysuplier { get => _displaysuplier; set { _displaysuplier = value; OnPropertyChanged(); } }
+        private string _displayobject;
+        public string Displayobject { get => _displayobject; set { _displayobject = value; OnPropertyChanged(); } }
+        private Nullable<int> _Quantitysp;
+        public Nullable<int> Quantitysp { get => _Quantitysp; set { _Quantitysp = value; OnPropertyChanged(); } }
+        private Nullable<int> _Quantityob;
+        public Nullable<int> Quantityob { get => _Quantityob; set { _Quantityob = value; OnPropertyChanged(); } }
+
+        private Object _object;
+        public virtual Object Object { get => _object; set { _object = value; OnPropertyChanged(); } }
+        private Suplier _Suplier;
+        public virtual Suplier Suplier { get => _Suplier; set { _Suplier = value; OnPropertyChanged(); } }
     }
 }

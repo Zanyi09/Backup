@@ -52,6 +52,9 @@
         <DataTemplate DataType="{x:Type uc:InputViewModel}">
             <local1:InputWindow/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type uc:ReportViewModel}">
+            <local1:ReportWindow/>
+        </DataTemplate>
     </Window.Resources>
     <Border CornerRadius="10"                    
             BorderThickness="1">
@@ -161,7 +164,7 @@
                     </RadioButton>
                     <RadioButton Style="{StaticResource menuButton}"
                                 Tag="{StaticResource color7}"
-                                Command="{Binding ShowCustomerViewCommand}">
+                                Command="{Binding ShowHomeReport}">
                         <StackPanel Orientation="Horizontal">
                             <fa:IconImage Icon="PieChart" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="Báo cáo" Style="{StaticResource menuButtonText}"/>

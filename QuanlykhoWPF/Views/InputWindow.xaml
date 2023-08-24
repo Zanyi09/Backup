@@ -43,14 +43,14 @@
                         </Grid.ColumnDefinitions>
                         <Grid Grid.Column="0" Margin="10">
                             <Button Grid.Column="2"
-        Command="{Binding Addcommand}"                            
-        Content="Thêm"                            
-        FontSize="12"
-        FontFamily="Montserrat"
-        Cursor="Hand"
-        BorderThickness="0"
-        Foreground="White"
-VerticalAlignment="Center">
+                                Command="{Binding Addcommand}"                            
+                                Content="Thêm"                            
+                                FontSize="12"
+                                FontFamily="Montserrat"
+                                Cursor="Hand"
+                                BorderThickness="0"
+                                Foreground="White"
+                        VerticalAlignment="Center">
                                 <Button.Style>
                                     <Style TargetType="Button">
                                         <Setter Property="Background" Value="#773DFF"/>

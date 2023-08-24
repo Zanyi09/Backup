@@ -20,7 +20,7 @@ namespace QuanlykhoWPF.ViewModel
        
         public bool IsLoading = false;
 
-        public string filePath = "C:/Users/IRTech/source/repos/QuanlykhoWPF/login.txt";
+        public string filePath = "C:/Users/IRTech/source/repos/login.txt";
 
         private string _username;
         public string Username { get => _username; set { _username = value; OnPropertyChanged(); } }
@@ -43,6 +43,7 @@ namespace QuanlykhoWPF.ViewModel
         public ICommand ShowHomeObject { get; set; }
         public ICommand ShowHomeStaff { get; set; }
         public ICommand ShowHomeInput { get; set; }
+        public ICommand ShowHomeReport { get; set; }
         public MainViewModel() 
         {
            
@@ -98,7 +99,7 @@ namespace QuanlykhoWPF.ViewModel
                 CurrentChildView = new HomeViewModel();
                 Caption = "Trang chủ";
                 Icon = IconChar.Home;
-                OnPropertyChanged(nameof(InputViewModel));
+                OnPropertyChanged(nameof(CurrentChildView));
 
             });
             ShowHomeCustomer = new RelayCommand<Window>((p) => { return true; }, (p) =>
@@ -106,42 +107,51 @@ namespace QuanlykhoWPF.ViewModel
                 CurrentChildView = new CustomerViewModel();
                 Caption = "Khách hàng";
                 Icon = IconChar.UserGroup;
-                OnPropertyChanged(nameof(InputViewModel));
+                OnPropertyChanged(nameof(CurrentChildView));
+
             }); 
             ShowHomeSupplier = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 CurrentChildView = new SupplierViewModel();
                 Caption = "Nhà cung cấp";
                 Icon = IconChar.Truck;
-                OnPropertyChanged(nameof(InputViewModel));
+                OnPropertyChanged(nameof(CurrentChildView));
+
             });
             ShowHomeUnit = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 CurrentChildView = new UnitViewModel();;
                 Caption = "Đơn vị đo";
                 Icon = IconChar.K;
-                OnPropertyChanged(nameof(InputViewModel));
+                OnPropertyChanged(nameof(CurrentChildView));
             });
             ShowHomeObject = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 CurrentChildView = new MainViewModel();
                 Caption = "Vật tư";
                 Icon = IconChar.Truck;
-                OnPropertyChanged(nameof(InputViewModel));
+                OnPropertyChanged(nameof(CurrentChildView));
             });  
             ShowHomeStaff = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 CurrentChildView = new StaffViewModel();
                 Caption = "Nhân viên";
                 Icon = IconChar.Person;
-                OnPropertyChanged();
+                OnPropertyChanged(nameof(CurrentChildView));
             });
             ShowHomeInput = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 CurrentChildView = new InputViewModel();
                 Caption = "Nhập hàng";
                 Icon = IconChar.ArrowAltCircleDown;
-                OnPropertyChanged(nameof(InputViewModel));
+                OnPropertyChanged(nameof(CurrentChildView));
+            });
+            ShowHomeReport = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                CurrentChildView = new ReportViewModel();
+                Caption = "Báo cáo";
+                Icon = IconChar.PieChart;
+                OnPropertyChanged(nameof(CurrentChildView));
             });
         }
     }

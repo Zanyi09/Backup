@@ -251,7 +251,7 @@ namespace QuanlykhoWPF.ViewModel
             List = new ObservableCollection<InputInfo>(Dataprovider._Istance.DB.InputInfoes);
             Input = new ObservableCollection<Input>(Dataprovider._Istance.DB.Inputs);
             Object = new ObservableCollection<Model.Object>(Dataprovider._Istance.DB.Objects);
-            Loadpagination();
+           // Loadpagination();
             Addcommand = new RelayCommand<object>((p) =>
             {
                 return true;
@@ -356,7 +356,7 @@ namespace QuanlykhoWPF.ViewModel
         }
         private void UpdateCollection(IEnumerable<InputInfo> input)
         {
-          List.Clear();
+          //List.Clear();
             foreach (var item in input)
             {
                 List.Add(item);
