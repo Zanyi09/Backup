@@ -9,12 +9,15 @@
 
 namespace QuanlykhoWPF.Model
 {
+    using QuanlykhoWPF.ViewModel;
     using System;
     using System.Collections.Generic;
     
-    public partial class Output
+    public partial class Output : BaseViewModel
     {
-        public string Id { get; set; }
-        public Nullable<System.DateTime> DateOutput { get; set; }
+        private string _id;
+        public string Id { get => _id; set { _id = value; OnPropertyChanged(); } }
+        private Nullable<System.DateTime> _DateOutput;
+        public Nullable<System.DateTime> DateOutput { get => _DateOutput; set { _DateOutput = value; OnPropertyChanged(); } }
     }
 }

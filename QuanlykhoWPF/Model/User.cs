@@ -25,7 +25,6 @@ namespace QuanlykhoWPF.Model
         public string Password { get => _Password; set { _Password = value; OnPropertyChanged(); } }
         private int _IdRole;
         public int IdRole { get => _IdRole; set { _IdRole = value; OnPropertyChanged(); } }
-
         public virtual UserRole UserRole { get; set; }
     }
 }

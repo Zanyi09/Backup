@@ -12,7 +12,7 @@ namespace QuanlykhoWPF.Model
     using QuanlykhoWPF.ViewModel;
     using System;
     using System.Collections.Generic;
-
+    
     public partial class Report : BaseViewModel
     {
         private int _id;

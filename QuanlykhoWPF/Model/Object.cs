@@ -36,6 +36,7 @@ namespace QuanlykhoWPF.Model
         private string _barcode;
         public string BarCode { get => _barcode; set { _barcode = value; OnPropertyChanged(); } }
 
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<InputInfo> InputInfoes { get; set; }
         private Suplier _Suplier;

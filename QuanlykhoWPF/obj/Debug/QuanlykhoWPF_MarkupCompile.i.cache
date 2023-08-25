@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\IRTech\source\repos\ProjectWPF\QuanlykhoWPF\Views\App.xaml
-15-328030873
+16-978052574
 2739969757
-45682447049
+471160594539
 26-1392255731
-Views\CustomerWindow.xaml;Views\HomeWindow.xaml;Views\InputWindow.xaml;Views\Login.xaml;Views\MainWindow.xaml;Resource\MainResource.xaml;Styles\ButtonStyle.xaml;Styles\UIcolor.xaml;UserControlVD\UserControlBarVD.xaml;UserControlVD\UsernameBar.xaml;Views\ObjectWindow.xaml;Views\ReportWindow.xaml;Views\StaffWindow.xaml;Views\SupplierWindow.xaml;Views\UnitWindow.xaml;
+Views\CustomerWindow.xaml;Views\HomeWindow.xaml;Views\InputWindow.xaml;Views\Login.xaml;Views\MainWindow.xaml;Resource\MainResource.xaml;Styles\ButtonStyle.xaml;Styles\UIcolor.xaml;UserControlVD\UserControlBarVD.xaml;UserControlVD\UsernameBar.xaml;Views\ObjectWindow.xaml;Views\OutputWindow.xaml;Views\ReportWindow.xaml;Views\StaffWindow.xaml;Views\SupplierWindow.xaml;Views\UnitWindow.xaml;
 
 True
 

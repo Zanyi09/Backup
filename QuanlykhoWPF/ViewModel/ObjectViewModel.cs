@@ -145,7 +145,6 @@ namespace QuanlykhoWPF.ViewModel
 
             Dataprovider._Istance.DB.Objects.Remove(objectdel);
             Dataprovider._Istance.DB.SaveChanges();
-
             System.Windows.Forms.MessageBox.Show("Xóa thành công!");
             List.Remove(objectdel);
         }

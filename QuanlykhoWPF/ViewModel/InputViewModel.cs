@@ -251,13 +251,14 @@ namespace QuanlykhoWPF.ViewModel
             List = new ObservableCollection<InputInfo>(Dataprovider._Istance.DB.InputInfoes);
             Input = new ObservableCollection<Input>(Dataprovider._Istance.DB.Inputs);
             Object = new ObservableCollection<Model.Object>(Dataprovider._Istance.DB.Objects);
-           // Loadpagination();
+            Loadpagination();
             Addcommand = new RelayCommand<object>((p) =>
             {
                 return true;
             },
             (p) =>
             {
+                OnPropertyChanged();
                 var Input = new Input() { Id = Guid.NewGuid().ToString(), DateInput = DateInput };
                 Dataprovider._Istance.DB.Inputs.Add(Input);
                 var InputIfo = new InputInfo() { Id = Guid.NewGuid().ToString(), IdObject = Selectedobject.Id, IdInput = Input.Id, Count = Count, InputPrice = InputPrice, OutputPrice = OutputPrice, Status = Status };
@@ -292,10 +293,11 @@ namespace QuanlykhoWPF.ViewModel
             },
           (p) =>
           {
+              OnPropertyChanged();
               var Inputedit = Dataprovider._Istance.DB.InputInfoes.Where(a => a.Id == SelectedItem.Id).SingleOrDefault();
               var nameedit = Dataprovider._Istance.DB.Objects.Where(b => b.DisplayName == Selectedobject.DisplayName).FirstOrDefault();
               var dateedit = Dataprovider._Istance.DB.Inputs.Where(c => c.DateInput == SelectedInput.DateInput).FirstOrDefault();
-              Inputedit.IdObject = IdObject;
+              Inputedit.IdObject = Selectedobject.Id;
               nameedit.DisplayName = Selectedobject.DisplayName;
               dateedit.DateInput = DateInput;
               Inputedit.Count = Count;
@@ -303,6 +305,8 @@ namespace QuanlykhoWPF.ViewModel
               Inputedit.OutputPrice = OutputPrice;
               Inputedit.Status = Status;
               Dataprovider._Istance.DB.SaveChanges();
+              OnPropertyChanged(nameof(LstOfRecords));
+              
 
 
           });
@@ -321,6 +325,7 @@ namespace QuanlykhoWPF.ViewModel
         }
         private void Delete(object b)
         {
+            OnPropertyChanged();
             var input = Dataprovider._Istance.DB.Inputs.Where(x => x.Id == SelectedInput.Id).FirstOrDefault();
             var inputdel = Dataprovider._Istance.DB.InputInfoes.Where(a => a.Id == SelectedItem.Id).SingleOrDefault();
 
@@ -333,6 +338,7 @@ namespace QuanlykhoWPF.ViewModel
         // Pagination
         public void Loadpagination()
         {
+            OnPropertyChanged();
 
             var inputlist = Dataprovider._Istance.DB.InputInfoes;
            // var nameedit = Dataprovider._Istance.DB.Objects.Where(b => b.DisplayName == Selectedobject.DisplayName).FirstOrDefault();
@@ -342,8 +348,8 @@ namespace QuanlykhoWPF.ViewModel
                 InputInfo inputInfo = new InputInfo();
                 inputInfo.Id = item.Id;
                 inputInfo.IdInput = item.IdInput;
-                inputInfo.DisplayName = item.Object.DisplayName;
-                inputInfo.DateInput = item.Input.DateInput;
+                inputInfo.Object = item.Object;
+                inputInfo.Input = item.Input;
                 inputInfo.Count = item.Count;
                 inputInfo.InputPrice = item.InputPrice;
                 inputInfo.OutputPrice = item.OutputPrice;
@@ -356,7 +362,7 @@ namespace QuanlykhoWPF.ViewModel
         }
         private void UpdateCollection(IEnumerable<InputInfo> input)
         {
-          //List.Clear();
+         List.Clear();
             foreach (var item in input)
             {
                 List.Add(item);

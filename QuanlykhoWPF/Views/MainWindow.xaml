@@ -54,6 +54,9 @@
         </DataTemplate>
         <DataTemplate DataType="{x:Type uc:ReportViewModel}">
             <local1:ReportWindow/>
+        </DataTemplate>     
+        <DataTemplate DataType="{x:Type uc:OutputViewModel}">
+            <local1:OutputWindow/>
         </DataTemplate>
     </Window.Resources>
     <Border CornerRadius="10"                    
@@ -148,18 +151,10 @@
                     </RadioButton>
                     <RadioButton Style="{StaticResource menuButton}"
                                  Tag="{StaticResource color5}"
-                                 Command="{Binding ShowCustomerViewCommand}">
+                                 Command="{Binding ShowHomeOuput}">
                         <StackPanel Orientation="Horizontal">
                             <fa:IconImage Icon="ArrowAltCircleUp" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="Xuất hàng" Style="{StaticResource menuButtonText}"/>
-                        </StackPanel>
-                    </RadioButton>
-                    <RadioButton Style="{StaticResource menuButton}"
-                                 Tag="{StaticResource color5}"
-                                 Command="{Binding ShowHomeStaff}">
-                        <StackPanel Orientation="Horizontal">
-                            <fa:IconImage Icon="Person" Style="{StaticResource menuButtonIcon}"/>
-                            <TextBlock Text="Nhân viên" Style="{StaticResource menuButtonText}"/>
                         </StackPanel>
                     </RadioButton>
                     <RadioButton Style="{StaticResource menuButton}"

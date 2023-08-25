@@ -175,3 +175,5 @@ C:\Users\IRTech\source\repos\ProjectWPF\QuanlykhoWPF\obj\Debug\QuanlykhoWPF.exe
 C:\Users\IRTech\source\repos\ProjectWPF\QuanlykhoWPF\obj\Debug\QuanlykhoWPF.pdb
 C:\Users\IRTech\source\repos\ProjectWPF\QuanlykhoWPF\obj\Debug\Views\ReportWindow.g.cs
 C:\Users\IRTech\source\repos\ProjectWPF\QuanlykhoWPF\obj\Debug\Views\ReportWindow.baml
+C:\Users\IRTech\source\repos\ProjectWPF\QuanlykhoWPF\obj\Debug\Views\OutputWindow.g.cs
+C:\Users\IRTech\source\repos\ProjectWPF\QuanlykhoWPF\obj\Debug\Views\OutputWindow.baml

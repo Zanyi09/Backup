@@ -21,7 +21,6 @@ namespace QuanlykhoWPF.Model
             this.OutputInfoes = new HashSet<OutputInfo>();
         }
 
-
         private string _id;
         public string Id { get => _id; set { _id = value; OnPropertyChanged(); } }
         private string _IdObject;
@@ -41,6 +40,7 @@ namespace QuanlykhoWPF.Model
         public Nullable<double> OutputPrice { get => _OutputPrice; set { _OutputPrice = value; OnPropertyChanged(); } }
         private string _Status;
         public string Status { get => _Status; set { _Status = value; OnPropertyChanged(); } }
+
 
         private Input _input;
         public virtual Input Input { get => _input; set { _input = value; OnPropertyChanged(); } }

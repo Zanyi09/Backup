@@ -44,6 +44,7 @@ namespace QuanlykhoWPF.ViewModel
         public ICommand ShowHomeStaff { get; set; }
         public ICommand ShowHomeInput { get; set; }
         public ICommand ShowHomeReport { get; set; }
+        public ICommand ShowHomeOuput { get; set; }
         public MainViewModel() 
         {
            
@@ -151,6 +152,13 @@ namespace QuanlykhoWPF.ViewModel
                 CurrentChildView = new ReportViewModel();
                 Caption = "Báo cáo";
                 Icon = IconChar.PieChart;
+                OnPropertyChanged(nameof(CurrentChildView));
+            });
+            ShowHomeOuput = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                CurrentChildView = new OutputViewModel();
+                Caption = "Xuất hàng";
+                Icon = IconChar.ArrowAltCircleUp;
                 OnPropertyChanged(nameof(CurrentChildView));
             });
         }

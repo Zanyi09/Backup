@@ -33,7 +33,7 @@
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Grid Grid.Column="0">
-                                        <ListView ItemsSource="{Binding List}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}">
+                                    <ListView ItemsSource="{Binding LstOfRecords}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}">
                                             <ListView.View>
                                                 <GridView>
                                                     <GridViewColumn Header="STT" Width="110" DisplayMemberBinding="{Binding Id }"></GridViewColumn>
@@ -44,7 +44,7 @@
                                         </ListView>
                                     </Grid>
                                     <Grid Grid.Column="1">
-                                        <ListView ItemsSource="{Binding Listob}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}">
+                                    <ListView ItemsSource="{Binding LstOfRecords2}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}">
                                             <ListView.View>
                                                 <GridView>
                                                     <GridViewColumn Header="Vật tư" DisplayMemberBinding="{Binding Displayobject}"></GridViewColumn>

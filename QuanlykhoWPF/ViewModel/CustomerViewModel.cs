@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -58,7 +59,7 @@ namespace QuanlykhoWPF.ViewModel
         public ICommand Editcommand { get; set; }
         public ICommand DeleteCommand { get; set; }
         public CustomerViewModel()
-        {
+        {        
             List = new ObservableCollection<Customer>(Dataprovider._Istance.DB.Customers);
 
             Addcommand = new RelayCommand<object>((p) =>

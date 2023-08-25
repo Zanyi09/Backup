@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace QuanlykhoWPF.ViewModel
 {
@@ -28,10 +29,12 @@ namespace QuanlykhoWPF.ViewModel
         public Nullable<int> Quantityob { get => _Quantityob; set { _Quantityob = value; OnPropertyChanged(); } }
 
         private ObservableCollection<Report> _list;
-        public ObservableCollection<Report> List { get => _list; set { _list = value; OnPropertyChanged(); } }        
+        public ObservableCollection<Report> List { get => _list; set { _list = value; OnPropertyChanged(); } }
 
-        private ObservableCollection<Report> _listob;
-        public ObservableCollection<Report> Listob { get => _listob; set { _listob = value; OnPropertyChanged(); } }
+
+        public List<Report> LstOfRecords { get; private set; } = new List<Report>();
+        public List<Report> LstOfRecords2 { get; private set; } = new List<Report>();
+
         public ReportViewModel() 
         {
             LoaddataSuplier();
@@ -51,51 +54,45 @@ namespace QuanlykhoWPF.ViewModel
                 reports.Id = i;
                 reports.Displaysuplier = item.DisplayName;
                 reports.Quantitysp = item.Objects.Count;
-                Dataprovider._Istance.DB.Reports.Add(reports);
                 List.Add(reports);
                 i++;
             }
-            UpdateCollection(List);
+          UpdateCollection(List.Take(5));
         }
         private void LoaddataObject()
         {
-            int input = 0;
-            Listob = new ObservableCollection<Report>();
+            List = new ObservableCollection<Report>();
             var Inputlist = Dataprovider._Istance.DB.InputInfoes.OrderByDescending(p => p.Count);
+    
             foreach (var item in Inputlist)
             {
-                var s = Dataprovider._Istance.DB.InputInfoes.Where(p => p.IdObject == item.Id);
-                if (Inputlist != null && Inputlist.Count() > 0)
-                {
-                    input = (int)Inputlist.Sum(p => p.Count);
-                }
                 Report report = new Report();
                 report.Displayobject = item.Object.DisplayName;
-                report.Quantityob = input;
+                report.Quantityob = item.Count;
 
-                Listob.Add(report);
+                List.Add(report);
             }
-            UpdateCollections(Listob);
+            UpdateCollections(List.Take(5));
         }
 
         private void UpdateCollection(IEnumerable<Report> reports)
         {
-            List.Clear();
+            LstOfRecords.Clear();
             foreach (var item in reports)
             {
-                List.Add(item);
-                OnPropertyChanged(nameof(List));
+                LstOfRecords.Add(item);
+                OnPropertyChanged(nameof(LstOfRecords));
             }
 
         }
 
         private void UpdateCollections(IEnumerable<Report> reports)
         {
-            Listob.Clear();
+            LstOfRecords2.Clear();
             foreach (var item in reports)
             {
-                Listob.Add(item);
-                OnPropertyChanged(nameof(Listob));
+                LstOfRecords2.Add(item);
+                OnPropertyChanged(nameof(LstOfRecords2));
             }
 
         }
